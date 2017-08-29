@@ -19,6 +19,9 @@ class UsercustomerController extends Controller
         $user = UserCustomer::where("phone", $phone)->get();
         if(!is_null($user))
         {
+            //If user exists, update token
+            $user->token = $token;
+            $user->save();
             return response()->json([
                'result'=>'User already exists',
             ]);
