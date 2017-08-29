@@ -21,7 +21,7 @@ class UsercustomerController extends Controller
         {
             //If user exists, update token
             $user->token = $token;
-            $user->save();
+            //$user->save();
             return response()->json([
                'result'=>'User already exists',
             ]);
