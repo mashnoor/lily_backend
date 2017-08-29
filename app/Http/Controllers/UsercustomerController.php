@@ -16,7 +16,7 @@ class UsercustomerController extends Controller
         $shareCode = $request->get('shareCode');
         $firstRide = $request->get('firstRide');
         $token = $request->get('token');
-        $user = UserCustomer::where("phone", $phone)->get();
+        $user = UserCustomer::where("phone", $phone);
         if(!is_null($user))
         {
             //If user exists, update token
