@@ -7,7 +7,7 @@ use App\UserCustomer;
 
 class UsercustomerController extends Controller
 {
-    function singup(Request $request)
+    function signup(Request $request)
     {
         $name = $request->get('name');
         $phone = $request->get('phone');
@@ -24,6 +24,7 @@ class UsercustomerController extends Controller
         $userCustomer->shareCode = $shareCode;
         $userCustomer->firstRide = $firstRide;
         $userCustomer->token = $token;
+        $userCustomer->save();
         return response()->json([
             'result'=>'success',
         ]);
