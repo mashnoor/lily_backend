@@ -3,6 +3,7 @@
 ####Base URL: api.lily.services/api/
 ####Create User API
 Link: signupusercustomer
+
 Method: POST
 ```
 name: String
@@ -15,6 +16,10 @@ token: String
 ```
 #####Response
 On Success
-'''
+```
 {"result":"success"}
-'''
+```
+On User Exists
+```
+{"result":"User already exists"}
+```
