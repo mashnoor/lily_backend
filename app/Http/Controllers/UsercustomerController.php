@@ -16,6 +16,14 @@ class UsercustomerController extends Controller
         $shareCode = $request->get('shareCode');
         $firstRide = $request->get('firstRide');
         $token = $request->get('token');
+        $user = UserCustomer::where("phone", $phone)->get();
+        if(!is_null($user))
+        {
+            return response()->json([
+               'result'=>'User already exists',
+            ]);
+        }
+
         $userCustomer = new UserCustomer();
         $userCustomer->name = $name;
         $userCustomer->phone = $phone;
