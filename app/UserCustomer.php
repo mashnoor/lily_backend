@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class UserCustomer extends Model
 {
-    protected $table = 'usercustomer';
+    protected $table = 'userCustomer';
     public $timestamps = false;
 
 }
