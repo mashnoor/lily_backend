@@ -34,7 +34,7 @@ class UserriderController extends Controller
         }
 
         $userRider = new UserRider();
-        
+
         $userRider->name = $name;
         $userRider->phone = $phone;
         $userRider->nidNumber = $nidNumber;
