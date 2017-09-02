@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\UserRider;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 
 class UserriderController extends Controller
@@ -18,7 +19,7 @@ class UserriderController extends Controller
         $registrationPic = $request->get('registrationPic');
 
         $userPic = $request->get('userPic');
-        $date = $request->get('date');
+
         $shareCode = $request->get('shareCode');
         $firstRide = $request->get('firstRide');
         $token = $request->get('token');
@@ -26,6 +27,17 @@ class UserriderController extends Controller
         if (!is_null($user)) {
             //If user exists, update token
             $user->token = $token;
+            $user->name = $name;
+            $user->nidNumber = $nidNumber;
+            $user->licenseNO = $licenseNO;
+            $user->registrationNO = $registrationNO;
+            $user->licensePic = $licensePic;
+            $user->registrationPic = $registrationPic;
+            $user->userPic = $userPic;
+            $user->date = Carbon::now();
+            $user->shareCode = $shareCode;
+            $user->firstRide = $firstRide;
+
             $user->save();
             return response()->json([
                 'result' => 'User already exists',
@@ -44,14 +56,14 @@ class UserriderController extends Controller
         $userRider->registrationPic = $registrationPic;
         $userRider->registrationPic = $registrationPic;
         $userRider->userPic = $userPic;
-        $userRider->date = $date;
+        $userRider->date = Carbon::now();
         $userRider->shareCode = $shareCode;
         $userRider->firstRide = $firstRide;
         $userRider->token = $token;
         $userRider->save();
         return response()->json([
             'result' => 'success',
-            'userdata'=>$userRider,
+            'userdata' => $userRider,
         ]);
     }
 }

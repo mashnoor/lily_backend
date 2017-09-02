@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use App\UserCustomer;
 
@@ -12,7 +13,7 @@ class UsercustomerController extends Controller
         $name = $request->get('name');
         $phone = $request->get('phone');
         $picture = $request->get('picture');
-        $date = $request->get('date');
+
         $shareCode = $request->get('shareCode');
         $firstRide = $request->get('firstRide');
         $token = $request->get('token');
@@ -20,6 +21,11 @@ class UsercustomerController extends Controller
         if (!is_null($user)) {
             //If user exists, update token
             $user->token = $token;
+            $user->name = $name;
+            $user->picture = $picture;
+            $user->date = Carbon::now();
+            $user->shareCode = $shareCode;
+            $user->firstRide = $firstRide;
             $user->save();
             return response()->json([
                 'result' => 'User already exists',
@@ -31,7 +37,7 @@ class UsercustomerController extends Controller
         $userCustomer->name = $name;
         $userCustomer->phone = $phone;
         $userCustomer->picture = $picture;
-        $userCustomer->date = $date;
+        $userCustomer->date = Carbon::now();
         $userCustomer->shareCode = $shareCode;
         $userCustomer->firstRide = $firstRide;
         $userCustomer->token = $token;
