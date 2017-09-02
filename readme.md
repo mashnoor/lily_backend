@@ -9,6 +9,7 @@ Method: POST
 name: String
 phone: String
 picture: String
+email: String
 date: Date String
 shareCode: String
 firstRide: String
@@ -22,6 +23,7 @@ On Success
 	"userdata": {
 		"id": 3,
 		"name": "Mashnoor",
+		"email": "nmmashnoor@gmail.com",
 		"phone": "01912339275",
 		"picture": "pic",
 		"date": null,
@@ -41,6 +43,7 @@ On User Exists
 		"phone": "01912339275",
 		"picture": "pic",
 		"date": null,
+		"email": "nmmashnoor@gmail.com",
 		"shareCode": "9999",
 		"firstRide": null,
 		"token": "0934885"
@@ -54,6 +57,7 @@ Link: /signupuserrider
 name: String
 phone: String
 nidNumber: String
+email: String
 licenseNO: String
 registrationNO: String
 licensePic: String
@@ -81,6 +85,7 @@ On Success
 		"registrationPic": "778787834",
 		"userPic": "7777",
 		"date": "27\/12\/1997",
+		"email": "nmmashnoor@gmail.com",
 		"shareCode": "999333",
 		"firstRide": "0",
 		"token": "8888899",
@@ -101,6 +106,7 @@ On User Exists
 		"licenseNO": "932i9u428",
 		"registrationNO": "3y84y89",
 		"licensePic": "hgfuygw",
+		"email": "nmmashnoor@gmail.com",
 		"registrationPic": "778787834",
 		"userPic": "7777",
 		"date": "27\/12\/1997",

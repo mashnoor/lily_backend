@@ -40,7 +40,7 @@ class UsercustomerController extends Controller
         $userCustomer->phone = $phone;
         $userCustomer->picture = $picture;
         $userCustomer->email = $email;
-        $userCustomer->date = Carbon::now();
+        $userCustomer->date = Carbon::now()->toDateTimeString();
         $userCustomer->shareCode = $shareCode;
         $userCustomer->firstRide = $firstRide;
         $userCustomer->token = $token;
