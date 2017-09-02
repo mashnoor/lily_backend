@@ -17,7 +17,7 @@ class UserriderController extends Controller
         $registrationNO = $request->get('registrationNO');
         $licensePic = $request->get('licensePic');
         $registrationPic = $request->get('registrationPic');
-
+        $email = $request->get('email');
         $userPic = $request->get('userPic');
 
         $shareCode = $request->get('shareCode');
@@ -34,6 +34,7 @@ class UserriderController extends Controller
             $user->licensePic = $licensePic;
             $user->registrationPic = $registrationPic;
             $user->userPic = $userPic;
+            $user->email = $email;
             $user->date = Carbon::now();
             $user->shareCode = $shareCode;
             $user->firstRide = $firstRide;
@@ -50,6 +51,7 @@ class UserriderController extends Controller
         $userRider->name = $name;
         $userRider->phone = $phone;
         $userRider->nidNumber = $nidNumber;
+        $userRider->email = $email;
         $userRider->licenseNO = $licenseNO;
         $userRider->registrationNO = $registrationNO;
         $userRider->licensePic = $licensePic;

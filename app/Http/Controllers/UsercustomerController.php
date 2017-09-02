@@ -13,6 +13,7 @@ class UsercustomerController extends Controller
         $name = $request->get('name');
         $phone = $request->get('phone');
         $picture = $request->get('picture');
+        $email = $request->get('email');
 
         $shareCode = $request->get('shareCode');
         $firstRide = $request->get('firstRide');
@@ -22,6 +23,7 @@ class UsercustomerController extends Controller
             //If user exists, update token
             $user->token = $token;
             $user->name = $name;
+            $user->email = $email;
             $user->picture = $picture;
             $user->date = Carbon::now();
             $user->shareCode = $shareCode;
@@ -37,6 +39,7 @@ class UsercustomerController extends Controller
         $userCustomer->name = $name;
         $userCustomer->phone = $phone;
         $userCustomer->picture = $picture;
+        $userCustomer->email = $email;
         $userCustomer->date = Carbon::now();
         $userCustomer->shareCode = $shareCode;
         $userCustomer->firstRide = $firstRide;
