@@ -25,7 +25,7 @@ class UsercustomerController extends Controller
             $user->name = $name;
             $user->email = $email;
             $user->picture = $picture;
-            $user->date = Carbon::now();
+            $user->date = date("Y-m-d");
             $user->shareCode = $shareCode;
             $user->firstRide = $firstRide;
             $user->save();
@@ -40,7 +40,7 @@ class UsercustomerController extends Controller
         $userCustomer->phone = $phone;
         $userCustomer->picture = $picture;
         $userCustomer->email = $email;
-        $userCustomer->date = Carbon::now()->toDateTimeString();
+        $userCustomer->date = Carbon::now()->toDateString();
         $userCustomer->shareCode = $shareCode;
         $userCustomer->firstRide = $firstRide;
         $userCustomer->token = $token;
