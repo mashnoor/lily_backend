@@ -35,7 +35,7 @@ class UserriderController extends Controller
             $user->registrationPic = $registrationPic;
             $user->userPic = $userPic;
             $user->email = $email;
-            $user->date = Carbon::now();
+
             $user->shareCode = $shareCode;
             $user->firstRide = $firstRide;
 
@@ -58,7 +58,7 @@ class UserriderController extends Controller
         $userRider->registrationPic = $registrationPic;
         $userRider->registrationPic = $registrationPic;
         $userRider->userPic = $userPic;
-        $userRider->date = Carbon::now()->toDateTimeString();
+        $userRider->date = date("Y-m-d");
         $userRider->shareCode = $shareCode;
         $userRider->firstRide = $firstRide;
         $userRider->token = $token;
