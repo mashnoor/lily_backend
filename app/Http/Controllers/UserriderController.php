@@ -36,6 +36,7 @@ class UserriderController extends Controller
             $user->userPic = $userPic;
             $user->email = $email;
 
+
             $user->shareCode = $shareCode;
             $user->firstRide = $firstRide;
 
@@ -62,6 +63,7 @@ class UserriderController extends Controller
         $userRider->shareCode = $shareCode;
         $userRider->firstRide = $firstRide;
         $userRider->token = $token;
+        $userRider->status = "pending";
         $userRider->save();
         return response()->json([
             'result' => 'success',
