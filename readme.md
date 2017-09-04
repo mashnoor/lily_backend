@@ -116,3 +116,31 @@ On User Exists
 	}
 }
 ```
+####Set Current Location
+Link: /setcurrentlocation
+```
+userCustomer_id: int
+userRider_id: int
+lat: float
+lng: float
+rotation: float
+free: int
+lastOnline: date
+```
+
+On Response
+```
+{
+	"response": "current location stored successfully",
+	"currentlocation": {
+		"userCustomer_id": "1",
+		"userRider_id": "1",
+		"lat": "29.888",
+		"lng": "777.333",
+		"rotation": "89",
+		"free": "1",
+		"lastOnline": "2017-09-03 00:22:48",
+		"id": 2
+	}
+}
+```
