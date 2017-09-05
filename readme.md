@@ -67,6 +67,7 @@ date: Date String
 shareCode: String
 firstRide: Int
 token: String
+freelancer: Int
 ```
 
 #####Response
