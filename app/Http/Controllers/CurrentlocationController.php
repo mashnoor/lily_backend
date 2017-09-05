@@ -9,6 +9,7 @@ class CurrentlocationController extends Controller
 {
     function setcurrentlocation(Request $request)
     {
+
         $userCustomer_id = $request->get('userCustomer_id');
         $userRider_id = $request->get('userRider_id');
         $lat = $request->get('lat');
@@ -16,6 +17,21 @@ class CurrentlocationController extends Controller
         $rotation = $request->get('rotation');
         $free = $request->get('free');
         $lastOnline = $request->get('lastOnline');
+
+        $prevLocation = CurrentLocation::where('userCustomer_id', '=', $userCustomer_id)
+            ->where('userRider_id', '=', $userRider_id)->first();
+        if(!is_null($prevLocation))
+        {
+            $prevLocation->lat = $lat;
+            $prevLocation->lng = $lng;
+            $prevLocation->rotation = $rotation;
+            $prevLocation->free = $free;
+            $prevLocation->lastOnline = $lastOnline;
+            $prevLocation->save();
+            return response()->json([
+               "response" => "location updated successfully",
+            ]);
+        }
 
         $currentLocation = new CurrentLocation();
         $currentLocation->userCustomer_id = $userCustomer_id;
@@ -29,7 +45,6 @@ class CurrentlocationController extends Controller
 
         return response()->json([
            "response"=>"current location stored successfully",
-           "currentlocation"=>$currentLocation,
         ]);
 
     }
