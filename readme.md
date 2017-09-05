@@ -119,29 +119,54 @@ On User Exists
 ```
 ####Set Current Location
 Link: /setcurrentlocation
+
+Method: POST
 ```
-userCustomer_id: int
-userRider_id: int
-lat: float
-lng: float
-rotation: float
-free: int
-lastOnline: date
+token: String
 ```
 
 On Response
 ```
 {
 	"response": "current location stored successfully",
-	"currentlocation": {
-		"userCustomer_id": "1",
-		"userRider_id": "1",
+	
+}
+```
+####Get Free Riders
+Link: /getfreeriders
+```
+token: String
+```
+
+On Success
+```
+[
+	{
+		"id": 1,
+		"userCustomer_id": 1,
+		"userRider_id": 1,
 		"lat": "29.888",
 		"lng": "777.333",
-		"rotation": "89",
-		"free": "1",
-		"lastOnline": "2017-09-03 00:22:48",
-		"id": 2
+		"rotation": 89,
+		"free": 1,
+		"lastOnline": "2017-09-03"
+	},
+	{
+		"id": 2,
+		"userCustomer_id": 1,
+		"userRider_id": 1,
+		"lat": "29.888",
+		"lng": "777.333",
+		"rotation": 89,
+		"free": 1,
+		"lastOnline": "2017-09-03"
 	}
+]
+```
+
+On Failure
+```
+{
+	"response": "token didn't match"
 }
 ```
