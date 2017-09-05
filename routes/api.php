@@ -18,3 +18,4 @@ use Illuminate\Http\Request;
 Route::post('/signupusercustomer', 'UsercustomerController@signup');
 Route::post('/signupuserrider', 'UserriderController@signup');
 Route::post('/setcurrentlocation', 'CurrentlocationController@setcurrentlocation');
+Route::post('/getfreeriders', 'CurrentlocationController@getFreeRiders');

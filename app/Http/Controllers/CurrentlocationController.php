@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\CurrentLocation;
+use App\UserCustomer;
 use Illuminate\Http\Request;
 
 class CurrentlocationController extends Controller
@@ -47,6 +48,20 @@ class CurrentlocationController extends Controller
            "response"=>"current location stored successfully",
         ]);
 
+    }
+
+    function getFreeRiders(Request $request)
+    {
+        $token = $request->get('token');
+        $userCustomer = UserCustomer::where('token', '=', $token)->first();
+        if(is_null($userCustomer))
+        {
+            return response()->json([
+                "response" => "token didn't match"
+            ]);
+        }
+        $currentFreeRiders = CurrentLocation::where('free', '=', '1')->get();
+        return $currentFreeRiders;
     }
 
 }
