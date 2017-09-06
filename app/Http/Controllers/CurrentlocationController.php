@@ -19,10 +19,10 @@ class CurrentlocationController extends Controller
         $free = $request->get('free');
         $lastOnline = $request->get('lastOnline');
 
-        $prevLocation = CurrentLocation::where('userCustomer_id', '=', $userCustomer_id)
-            ->where('userRider_id', '=', $userRider_id)->first();
+        $prevLocation = CurrentLocation::where('userRider_id', '=', $userRider_id)->first();
         if(!is_null($prevLocation))
         {
+            $prevLocation->userRider_id = $userRider_id;
             $prevLocation->lat = $lat;
             $prevLocation->lng = $lng;
             $prevLocation->rotation = $rotation;
