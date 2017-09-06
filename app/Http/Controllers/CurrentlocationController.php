@@ -20,9 +20,9 @@ class CurrentlocationController extends Controller
         $lastOnline = $request->get('lastOnline');
 
         $prevLocation = CurrentLocation::where('userRider_id', '=', $userRider_id)->first();
-        if(!is_null($prevLocation))
-        {
-            $prevLocation->userRider_id = $userRider_id;
+        if (!is_null($prevLocation)) {
+            $prevLocation->userCustomer_id = $userCustomer_id;
+
             $prevLocation->lat = $lat;
             $prevLocation->lng = $lng;
             $prevLocation->rotation = $rotation;
@@ -30,7 +30,7 @@ class CurrentlocationController extends Controller
             $prevLocation->lastOnline = $lastOnline;
             $prevLocation->save();
             return response()->json([
-               "response" => "location updated successfully",
+                "response" => "location updated successfully",
             ]);
         }
 
@@ -45,7 +45,7 @@ class CurrentlocationController extends Controller
         $currentLocation->save();
 
         return response()->json([
-           "response"=>"current location stored successfully",
+            "response" => "current location stored successfully",
         ]);
 
     }
@@ -54,8 +54,7 @@ class CurrentlocationController extends Controller
     {
         $token = $request->get('token');
         $userCustomer = UserCustomer::where('token', '=', $token)->first();
-        if(is_null($userCustomer))
-        {
+        if (is_null($userCustomer)) {
             return response()->json([
                 "response" => "token didn't match"
             ]);
