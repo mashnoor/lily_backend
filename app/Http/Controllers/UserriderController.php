@@ -24,6 +24,7 @@ class UserriderController extends Controller
         $firstRide = $request->get('firstRide');
         $token = $request->get('token');
         $freelancer = $request->get('freelancer');
+        $address = $request->get('address');
         $user = UserRider::where("phone", $phone)->first();
         if (!is_null($user)) {
             //If user exists, update token
@@ -41,6 +42,7 @@ class UserriderController extends Controller
 
             $user->shareCode = $shareCode;
             $user->firstRide = $firstRide;
+            $user->address = $address;
 
             $user->save();
             return response()->json([
@@ -67,6 +69,7 @@ class UserriderController extends Controller
         $userRider->token = $token;
         $userRider->freelancer = $freelancer;
         $userRider->status = "pending";
+        $userRider->address = $address;
         $userRider->save();
         return response()->json([
             'result' => 'success',

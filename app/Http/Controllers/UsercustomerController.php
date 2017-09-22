@@ -18,6 +18,7 @@ class UsercustomerController extends Controller
         $shareCode = $request->get('shareCode');
         $firstRide = $request->get('firstRide');
         $token = $request->get('token');
+        $address = $request->get('address');
         $user = UserCustomer::where("phone", $phone)->first();
         if (!is_null($user)) {
             //If user exists, update token
@@ -28,6 +29,7 @@ class UsercustomerController extends Controller
 
             $user->shareCode = $shareCode;
             $user->firstRide = $firstRide;
+            $user->address = $address;
             $user->save();
             return response()->json([
                 'result' => 'User already exists',
@@ -44,6 +46,7 @@ class UsercustomerController extends Controller
         $userCustomer->shareCode = $shareCode;
         $userCustomer->firstRide = $firstRide;
         $userCustomer->token = $token;
+        $userCustomer->address = $address;
         $userCustomer->save();
         return response()->json([
             'result' => 'success',
