@@ -170,3 +170,21 @@ On Failure
 	"response": "token didn't match"
 }
 ```
+
+####Set Complain
+Link: /setcomplain
+
+Method: POST
+```
+message: String
+userCustomer_id: String
+userRider_id: String
+```
+
+On Response
+```
+{
+	"response": "complain added successfully",
+	
+}
+```
