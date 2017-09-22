@@ -50,9 +50,30 @@ class CurrentlocationController extends Controller
 
     }
 
+    function distance($lat1, $lon1, $lat2, $lon2, $unit)
+    {
+
+        $theta = $lon1 - $lon2;
+        $dist = sin(deg2rad($lat1)) * sin(deg2rad($lat2)) + cos(deg2rad($lat1)) * cos(deg2rad($lat2)) * cos(deg2rad($theta));
+        $dist = acos($dist);
+        $dist = rad2deg($dist);
+        $miles = $dist * 60 * 1.1515;
+        $unit = strtoupper($unit);
+
+        if ($unit == "K") {
+            return ($miles * 1.609344);
+        } else if ($unit == "N") {
+            return ($miles * 0.8684);
+        } else {
+            return $miles;
+        }
+    }
+
     function getFreeRiders(Request $request)
     {
         $token = $request->get('token');
+        $lat = $request->get('lat');
+        $lng = $request->get('lng');
         $userCustomer = UserCustomer::where('token', '=', $token)->first();
         if (is_null($userCustomer)) {
             return response()->json([
@@ -60,7 +81,21 @@ class CurrentlocationController extends Controller
             ]);
         }
         $currentFreeRiders = CurrentLocation::where('free', '=', '1')->get();
-        return $currentFreeRiders;
+        $sendRiders = array();
+        foreach ($currentFreeRiders as $currentFreeRider)
+        {
+            $curr_lat = $currentFreeRider->lat;
+            $curr_lng = $currentFreeRider->lng;
+            $distance = $this->distance($lat, $lng, $curr_lat, $curr_lng, "K");
+
+            if(doubleval($distance)>=1.5)
+            {
+                array_push($sendRiders, $currentFreeRider);
+            }
+
+
+        }
+        return $sendRiders;
     }
 
 }

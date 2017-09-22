@@ -136,6 +136,8 @@ On Response
 Link: /getfreeriders
 ```
 token: String
+lat: String
+lng: String
 ```
 
 On Success
