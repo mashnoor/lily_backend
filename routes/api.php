@@ -20,3 +20,5 @@ Route::post('/signupuserrider', 'UserriderController@signup');
 Route::post('/setcurrentlocation', 'CurrentlocationController@setcurrentlocation');
 Route::post('/getfreeriders', 'CurrentlocationController@getFreeRiders');
 Route::post('/setcomplain', 'ComplainController@setComplain');
+Route::post('/getcustomerprofile', 'UsercustomerController@getCustomerProfile');
+Route::post('/getriderprofile', 'UserriderController@getRiderProfile');

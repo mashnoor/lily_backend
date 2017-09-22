@@ -53,4 +53,27 @@ class UsercustomerController extends Controller
             'userdata'=>$userCustomer,
         ]);
     }
+
+    function getCustomerProfile(Request $request)
+    {
+        $phone = $request->get('phone');
+        $token = $request->get('token');
+        $user = UserCustomer::where("phone", $phone)
+            ->where('token', $token)->first();
+        if(is_null($user))
+        {
+            return response()->json([
+                "response" => "couldn't find customer profile",
+            ]);
+        }
+        else
+        {
+            return response()->json([
+                'result' => 'success',
+                'userdata'=>$user,
+            ]);
+        }
+
+
+    }
 }

@@ -39,7 +39,6 @@ class UserriderController extends Controller
             $user->email = $email;
 
 
-
             $user->shareCode = $shareCode;
             $user->firstRide = $firstRide;
             $user->address = $address;
@@ -75,5 +74,25 @@ class UserriderController extends Controller
             'result' => 'success',
             'userdata' => $userRider,
         ]);
+    }
+
+    function getRiderProfile(Request $request)
+    {
+        $phone = $request->get('phone');
+        $token = $request->get('token');
+        $user = UserRider::where("phone", $phone)
+            ->where('token', $token)->first();
+        if (is_null($user)) {
+            return response()->json([
+                "response" => "couldn't find rider profile",
+            ]);
+        } else {
+            return response()->json([
+                'result' => 'success',
+                'userdata' => $user,
+            ]);
+        }
+
+
     }
 }
