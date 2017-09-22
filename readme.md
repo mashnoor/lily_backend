@@ -13,6 +13,7 @@ email: String
 date: Date String
 shareCode: String
 firstRide: String
+address: String
 token: String
 ```
 #####Response
@@ -30,6 +31,7 @@ On Success
 		"shareCode": "9999",
 		"firstRide": null,
 		"token": "0934885"
+		"address": "auygyug"
 	}
 }
 ```
@@ -46,7 +48,8 @@ On User Exists
 		"email": "nmmashnoor@gmail.com",
 		"shareCode": "9999",
 		"firstRide": null,
-		"token": "0934885"
+		"token": "0934885",
+		"address":"uguyg"
 	}
 }
 ```
@@ -68,6 +71,7 @@ shareCode: String
 firstRide: Int
 token: String
 freelancer: Int
+address: String
 ```
 
 #####Response
@@ -90,7 +94,8 @@ On Success
 		"shareCode": "999333",
 		"firstRide": "0",
 		"token": "8888899",
-		"id": 3
+		"id": 3,
+		"address":"uhuih"
 	}
 }
 ```
@@ -113,7 +118,8 @@ On User Exists
 		"date": "27\/12\/1997",
 		"shareCode": "999333",
 		"firstRide": 0,
-		"token": "8888899"
+		"token": "8888899",
+		"address":"uhuih"
 	}
 }
 ```
