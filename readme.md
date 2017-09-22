@@ -196,3 +196,82 @@ On Response
 	
 }
 ```
+
+####Get Rider Profile
+Link: /getriderprofile
+
+Method: POST
+```
+token: String
+phone: String
+```
+
+#####On Response
+On Success
+```
+{
+	{
+        "result": "success",
+        "userdata": {
+            "id": 5,
+            "name": "Saif",
+            "phone": "01722043601",
+            "email": "email",
+            "nidNumber": "nid number",
+            "licenseNO": "license no",
+            "registrationNO": "regis no",
+            "licensePic": "pic",
+            "registrationPic": "pic",
+            "userPic": "pic",
+            "date": "2017-09-06",
+            "shareCode": "null",
+            "firstRide": 0,
+            "token": "fXFm4jozZjs:APA91bEFl6F_UJwGBJMmOSE4jhc_lg3O3LU0E0XOzrP4mkY_ejnpjibziPPmzf60DTuUpMqrWigCDakgP4zYUtK1lMfS-Ob5-gDI9vBzV054LdscyuMrAeBWq3XEqsvQ5Im1VTMCmlCD",
+            "status": "pending",
+            "freelancer": 1,
+            "address": null
+        }
+    }
+	
+}
+```
+On Failed
+```
+{
+    "response": "couldn't find rider profile"
+}
+```
+####Get Customer Profile
+Link: /getcustomerprofile
+
+Method: POST
+```
+token: String
+phone: String
+```
+
+#####On Response
+On Success
+```
+{
+    "result": "success",
+    "userdata": {
+        "id": 12,
+        "name": "hhhhh",
+        "phone": "01887666",
+        "email": "iiii@hhhhh",
+        "picture": "ughghyuguyghyg",
+        "date": "2017-09-22",
+        "shareCode": "iiiiiddd",
+        "firstRide": 1,
+        "token": "iugwuiwgfuywg",
+        "address": "iuguygfueriufgbjb befhuebvfhu bv"
+    }
+}
+```
+On Failed
+```
+{
+    "response": "couldn't find customer profile"
+}
+```
