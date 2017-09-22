@@ -16,6 +16,7 @@ class ComplainController extends Controller
         $complain->message = $message;
         $complain->userCustomer_id = $userCustomer_id;
         $complain->userRider_id = $userRider_id;
+        $complain->date = date("Y-m-d");
         $complain->save();
         return response()->json([
             "response" => "complain added successfully",
