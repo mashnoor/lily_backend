@@ -285,3 +285,10 @@ token: String
 ```
 #####On Response
 On Success
+```
+[{"id":1,"userCustomer_id":4,"origin":"Banasree","destination":"Uttara","date":null,"hour":16,"fare":788,"riderPercent":34,"companyPercent":88,"promoAmount":66,"promoCode_id":888,"userRider_id":3,"userShareCode_id":4,"historyId":"iirr"}]
+```
+On Failure
+```
+{"result":"user not found"}
+```
