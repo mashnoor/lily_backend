@@ -22,3 +22,4 @@ Route::post('/getfreeriders', 'CurrentlocationController@getFreeRiders');
 Route::post('/setcomplain', 'ComplainController@setComplain');
 Route::post('/getcustomerprofile', 'UsercustomerController@getCustomerProfile');
 Route::post('/getriderprofile', 'UserriderController@getRiderProfile');
+Route::post('/gethistory', 'HistoryController@getHistory');
