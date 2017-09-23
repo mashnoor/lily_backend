@@ -275,3 +275,13 @@ On Failed
     "response": "couldn't find customer profile"
 }
 ```
+
+####Get History
+Link: /gethistory
+
+Method: POST
+```
+token: String
+```
+#####On Response
+On Success

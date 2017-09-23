@@ -4,12 +4,10 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-
-class UserCustomer extends Model
+class History extends Model
 {
-    protected $table = 'userCustomer';
+    protected $table = 'history';
     public $timestamps = false;
-
 
 
 }
