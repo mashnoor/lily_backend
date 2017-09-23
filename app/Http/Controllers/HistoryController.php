@@ -26,4 +26,9 @@ class HistoryController extends Controller
         }
 
     }
+
+    function setHistory(Request $request)
+    {
+
+    }
 }

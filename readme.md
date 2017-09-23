@@ -11,7 +11,6 @@ phone: String
 picture: String
 email: String
 date: Date String
-shareCode: String
 firstRide: String
 address: String
 token: String

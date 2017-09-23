@@ -8,6 +8,15 @@ use App\UserCustomer;
 
 class UsercustomerController extends Controller
 {
+    function generateRandomString($length = 10) {
+        $characters = '0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+        $charactersLength = strlen($characters);
+        $randomString = '';
+        for ($i = 0; $i < $length; $i++) {
+            $randomString .= $characters[rand(0, $charactersLength - 1)];
+        }
+        return $randomString;
+    }
     function signup(Request $request)
     {
         $name = $request->get('name');
@@ -15,10 +24,11 @@ class UsercustomerController extends Controller
         $picture = $request->get('picture');
         $email = $request->get('email');
 
-        $shareCode = $request->get('shareCode');
+
         $firstRide = $request->get('firstRide');
         $token = $request->get('token');
         $address = $request->get('address');
+
         $user = UserCustomer::where("phone", $phone)->first();
         if (!is_null($user)) {
             //If user exists, update token
@@ -27,8 +37,12 @@ class UsercustomerController extends Controller
             $user->email = $email;
             $user->picture = $picture;
 
-            $user->shareCode = $shareCode;
-            $user->firstRide = $firstRide;
+
+            if(!$user->firstRide == "0")
+            {
+                $user->firstRide = $firstRide;
+            }
+
             $user->address = $address;
             $user->save();
             return response()->json([
@@ -43,7 +57,7 @@ class UsercustomerController extends Controller
         $userCustomer->picture = $picture;
         $userCustomer->email = $email;
         $userCustomer->date = date("Y-m-d");
-        $userCustomer->shareCode = $shareCode;
+        $userCustomer->shareCode = $this->generateRandomString(6);
         $userCustomer->firstRide = $firstRide;
         $userCustomer->token = $token;
         $userCustomer->address = $address;
