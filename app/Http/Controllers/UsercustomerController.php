@@ -71,9 +71,8 @@ class UsercustomerController extends Controller
     function getCustomerProfile(Request $request)
     {
         $phone = $request->get('phone');
-        $token = $request->get('token');
-        $user = UserCustomer::where("phone", $phone)
-            ->where('token', $token)->first();
+       
+        $user = UserCustomer::where("phone", $phone)->first();
         if(is_null($user))
         {
             return response()->json([
@@ -83,7 +82,7 @@ class UsercustomerController extends Controller
         else
         {
             return response()->json([
-                'result' => 'success',
+                'response' => 'success',
                 'userdata'=>$user,
             ]);
         }
