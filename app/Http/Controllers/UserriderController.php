@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\UserCustomer;
 use App\UserRider;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
@@ -78,18 +79,19 @@ class UserriderController extends Controller
 
     function getRiderProfile(Request $request)
     {
-        $phone = $request->get('phone');
-        $token = $request->get('token');
-        $user = UserRider::where("phone", $phone)
-            ->where('token', $token)->first();
-        if (is_null($user)) {
+        $riderId = $request->get('riderid');
+        $customerToken = $request->get('customertoken');
+        $userCustomer = UserCustomer::where("token", $customerToken)->first();
+        if (is_null($userCustomer)) {
             return response()->json([
-                "response" => "couldn't find rider profile",
+                "response" => "couldn't find customer",
             ]);
-        } else {
+        }
+        else {
+            $userRider = UserRider::where('id', $riderId)->first();
             return response()->json([
-                'result' => 'success',
-                'userdata' => $user,
+                'response' => 'success',
+                'userdata' => $userRider,
             ]);
         }
 

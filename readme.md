@@ -201,8 +201,8 @@ Link: /getriderprofile
 
 Method: POST
 ```
-token: String
-phone: String
+customertoken: String
+riderid: String
 ```
 
 #####On Response
