@@ -28,6 +28,7 @@ class UnsuccessfulRideController extends Controller
             $unsuccessfulride->userCustomer_id = $customerId;
             $unsuccessfulride->userRider_id = $riderId;
             $unsuccessfulride->unsuccessfullRideType_id = $unsuccessfulridetype_id;
+            $unsuccessfulride->date = date("Y-m-d");
             $unsuccessfulride->save();
 
         } else if ($causeType == "2") {
@@ -41,6 +42,7 @@ class UnsuccessfulRideController extends Controller
             $unsuccessfulride->userCustomer_id = $customerId;
             $unsuccessfulride->userRider_id = $riderId;
             $unsuccessfulride->unsuccessfullRideType_id = $unsuccessfulridetype_id;
+            $unsuccessfulride->date = date("Y-m-d");
             $unsuccessfulride->save();
 
         } else if ($causeType == "3") {
@@ -53,6 +55,7 @@ class UnsuccessfulRideController extends Controller
 
             $unsuccessfulride->userCustomer_id = $customerId;
             $unsuccessfulride->unsuccessfullRideType_id = $unsuccessfulridetype_id;
+            $unsuccessfulride->date = date("Y-m-d");
             $unsuccessfulride->save();
 
         }
