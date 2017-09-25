@@ -15,7 +15,7 @@ class UnsuccessfulRideController extends Controller
         $riderId = $request->get("riderid", null);
         $causeType = $request->get("causetype");
         $unsuccessfulridetype = new UnsuccessfulRideType();
-       
+
 
         if ($causeType == "1") {
             $unsuccessfulridetype->byCustomer = "0";

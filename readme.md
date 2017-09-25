@@ -291,3 +291,27 @@ On Failure
 ```
 {"result":"user not found"}
 ```
+
+####Set Unsuccessful Ride
+Link: /setunsuccessfulride
+
+Method: POST
+```
+customerid: String (Default Null)
+riderid: String (Default Null)
+causetype: String (1 --> byRider, 2-->byCustomer, 3-->byRiderNotFound)
+```
+#####On Response
+On Success
+```
+{
+	"response": "success",
+	"unsuccessfulridedetail": {
+		"userCustomer_id": "1",
+		"userRider_id": "1",
+		"unsuccessfullRideType_id": 1,
+		"date": "2017-09-26",
+		"id": 1
+	}
+}
+```
