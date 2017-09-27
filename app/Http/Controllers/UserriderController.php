@@ -9,6 +9,15 @@ use Illuminate\Http\Request;
 
 class UserriderController extends Controller
 {
+    function generateRandomString($length = 10) {
+        $characters = '0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+        $charactersLength = strlen($characters);
+        $randomString = '';
+        for ($i = 0; $i < $length; $i++) {
+            $randomString .= $characters[rand(0, $charactersLength - 1)];
+        }
+        return $randomString;
+    }
     function signup(Request $request)
     {
         $name = $request->get('name');
@@ -21,11 +30,12 @@ class UserriderController extends Controller
         $email = $request->get('email');
         $userPic = $request->get('userPic');
 
-        $shareCode = $request->get('shareCode');
+
         $firstRide = $request->get('firstRide');
         $token = $request->get('token');
         $freelancer = $request->get('freelancer');
         $address = $request->get('address');
+        $pending = $request->get('pending');
         $user = UserRider::where("phone", $phone)->first();
         if (!is_null($user)) {
             //If user exists, update token
@@ -38,9 +48,10 @@ class UserriderController extends Controller
             $user->registrationPic = $registrationPic;
             $user->userPic = $userPic;
             $user->email = $email;
+            $user->peending = $pending;
 
 
-            $user->shareCode = $shareCode;
+
             $user->firstRide = $firstRide;
             $user->address = $address;
 
@@ -64,17 +75,36 @@ class UserriderController extends Controller
         $userRider->registrationPic = $registrationPic;
         $userRider->userPic = $userPic;
         $userRider->date = date("Y-m-d");
-        $userRider->shareCode = $shareCode;
+        $userRider->shareCode = $this->generateRandomString(6);
         $userRider->firstRide = $firstRide;
         $userRider->token = $token;
         $userRider->freelancer = $freelancer;
         $userRider->status = "pending";
         $userRider->address = $address;
+        $userRider->pending = $pending;
         $userRider->save();
         return response()->json([
             'result' => 'success',
             'userdata' => $userRider,
         ]);
+    }
+    function getRiderProfileByPhone(Request $request)
+    {
+        $phone = $request->get('riderphone');
+        $userRider = UserRider::where('phone', $phone)->first();
+        if(is_null($userRider))
+        {
+            return response()->json([
+               'response' => 'rider not found'
+            ]);
+        }
+        else
+        {
+            return response()->json([
+               'response' => 'success',
+                'userdata' => $userRider
+            ]);
+        }
     }
 
     function getRiderProfile(Request $request)
@@ -84,7 +114,7 @@ class UserriderController extends Controller
         $userCustomer = UserCustomer::where("token", $customerToken)->first();
         if (is_null($userCustomer)) {
             return response()->json([
-                "response" => "couldn't find customer",
+                "response" => "couldn't find rider",
             ]);
         }
         else {

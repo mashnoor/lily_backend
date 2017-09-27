@@ -8,6 +8,7 @@ use Illuminate\Http\Request;
 
 class UnsuccessfulRideController extends Controller
 {
+
     function setUnsuccessfulRide(Request $request)
     {
         //1 --> byRider, 2-->byCustomer, 3-->byRiderNotFound

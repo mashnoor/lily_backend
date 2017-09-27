@@ -24,3 +24,4 @@ Route::post('/getcustomerprofile', 'UsercustomerController@getCustomerProfile');
 Route::post('/getriderprofile', 'UserriderController@getRiderProfile');
 Route::post('/gethistory', 'HistoryController@getHistory');
 Route::post('/setunsuccessfulride', 'UnsuccessfulRideController@setUnsuccessfulRide');
+Route::post('/getriderprofilebyphone', 'UserriderController@getRiderProfileByPhone');

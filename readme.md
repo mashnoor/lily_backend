@@ -14,6 +14,7 @@ date: Date String
 firstRide: String
 address: String
 token: String
+
 ```
 #####Response
 On Success
@@ -71,6 +72,7 @@ firstRide: Int
 token: String
 freelancer: Int
 address: String
+pending: String
 ```
 
 #####Response
@@ -313,5 +315,48 @@ On Success
 		"date": "2017-09-26",
 		"id": 1
 	}
+}
+```
+####Get Rider Profile (By Phone)
+Link: /getriderprofilebyphone
+
+Method: POST
+```
+phone: String
+```
+
+#####On Response
+On Success
+```
+{
+	{
+        "result": "success",
+        "userdata": {
+            "id": 5,
+            "name": "Saif",
+            "phone": "01722043601",
+            "email": "email",
+            "nidNumber": "nid number",
+            "licenseNO": "license no",
+            "registrationNO": "regis no",
+            "licensePic": "pic",
+            "registrationPic": "pic",
+            "userPic": "pic",
+            "date": "2017-09-06",
+            "shareCode": "null",
+            "firstRide": 0,
+            "token": "fXFm4jozZjs:APA91bEFl6F_UJwGBJMmOSE4jhc_lg3O3LU0E0XOzrP4mkY_ejnpjibziPPmzf60DTuUpMqrWigCDakgP4zYUtK1lMfS-Ob5-gDI9vBzV054LdscyuMrAeBWq3XEqsvQ5Im1VTMCmlCD",
+            "status": "pending",
+            "freelancer": 1,
+            "address": null
+        }
+    }
+	
+}
+```
+On Failed
+```
+{
+    "response": "couldn't find rider"
 }
 ```
