@@ -35,7 +35,7 @@ class UserriderController extends Controller
         $token = $request->get('token');
         $freelancer = $request->get('freelancer');
         $address = $request->get('address');
-        $pending = $request->get('pending');
+        $status = $request->get('status');
         $user = UserRider::where("phone", $phone)->first();
         if (!is_null($user)) {
             //If user exists, update token
@@ -48,7 +48,7 @@ class UserriderController extends Controller
             $user->registrationPic = $registrationPic;
             $user->userPic = $userPic;
             $user->email = $email;
-            $user->peending = $pending;
+            $user->status = $status;
 
 
 
@@ -79,9 +79,9 @@ class UserriderController extends Controller
         $userRider->firstRide = $firstRide;
         $userRider->token = $token;
         $userRider->freelancer = $freelancer;
-        $userRider->status = "pending";
+        $userRider->status = $status;
         $userRider->address = $address;
-        $userRider->pending = $pending;
+
         $userRider->save();
         return response()->json([
             'result' => 'success',

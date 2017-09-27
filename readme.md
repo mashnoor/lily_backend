@@ -72,7 +72,7 @@ firstRide: Int
 token: String
 freelancer: Int
 address: String
-pending: String
+status: String
 ```
 
 #####Response
@@ -322,7 +322,7 @@ Link: /getriderprofilebyphone
 
 Method: POST
 ```
-phone: String
+riderphone: String
 ```
 
 #####On Response
