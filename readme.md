@@ -360,3 +360,13 @@ On Failed
     "response": "couldn't find rider"
 }
 ```
+
+####Send Notification
+Link: /sendnotification
+
+Method: POST
+```
+sender_token: String
+receiver_token: String
+message: String
+```
