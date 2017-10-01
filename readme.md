@@ -370,3 +370,7 @@ sender_token: String
 receiver_token: String
 message: String
 ```
+#####On Response
+```
+{"multicast_id":8190131147677521934,"success":1,"failure":0,"canonical_ids":0,"results":[{"message_id":"0:1506842881671812%b797635af9fd7ecd"}]}
+```
