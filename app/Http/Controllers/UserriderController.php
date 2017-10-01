@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Rating;
 use App\UserCustomer;
 use App\UserRider;
 use Carbon\Carbon;
