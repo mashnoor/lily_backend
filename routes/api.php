@@ -26,3 +26,4 @@ Route::post('/gethistory', 'HistoryController@getHistory');
 Route::post('/setunsuccessfulride', 'UnsuccessfulRideController@setUnsuccessfulRide');
 Route::post('/getriderprofilebyphone', 'UserriderController@getRiderProfileByPhone');
 Route::post('/sendnotification', 'NotificationController@sendNotfication');
+Route::post('/setrating', 'RatingController@setRating');
