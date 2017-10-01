@@ -82,7 +82,7 @@ class UsercustomerController extends Controller
             $main_rating += doubleval($rating->value);
 
         }
-        return $main_rating/count($ratings);
+        return $main_rating/doubleval(count($ratings));
 
     }
 
