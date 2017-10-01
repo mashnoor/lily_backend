@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Rating;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use App\UserCustomer;
@@ -68,6 +69,23 @@ class UsercustomerController extends Controller
         ]);
     }
 
+    function getCustomerRating($id)
+    {
+        $ratings = Rating::where('userCustomer_id', $id)->where('rateBy', '=', '0')->get();
+        $main_rating = 0.0;
+        if(count($ratings)<1)
+        {
+            return $main_rating;
+        }
+        foreach ($ratings as $rating)
+        {
+            $main_rating += doubleval($rating->value);
+
+        }
+        return $main_rating/count($ratings);
+
+    }
+
     function getCustomerProfile(Request $request)
     {
         $phone = $request->get('phone');
@@ -84,6 +102,8 @@ class UsercustomerController extends Controller
             return response()->json([
                 'response' => 'success',
                 'userdata'=>$user,
+                'rating' => $this->getCustomerRating($user->id),
+
             ]);
         }
 

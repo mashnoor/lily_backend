@@ -374,3 +374,19 @@ message: String
 ```
 {"multicast_id":8190131147677521934,"success":1,"failure":0,"canonical_ids":0,"results":[{"message_id":"0:1506842881671812%b797635af9fd7ecd"}]}
 ```
+####Set Rating
+Link: /sendnotification
+
+Method: POST
+```
+customer_id: String
+rider_id: String
+value: String
+rate_by: String (0 For By Rider, 1 for By customer)
+```
+#####On Response
+```
+{
+    "response": "success"
+}
+```
