@@ -88,7 +88,7 @@ class CurrentlocationController extends Controller
             $curr_lng = $currentFreeRider->lng;
             $distance = $this->distance($lat, $lng, $curr_lat, $curr_lng, "K");
 
-            if(doubleval($distance)<=1.5)
+            if(doubleval($distance)<=100000000000.5)
             {
                 array_push($sendRiders, $currentFreeRider);
             }
