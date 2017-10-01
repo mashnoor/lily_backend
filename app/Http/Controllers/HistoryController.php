@@ -43,6 +43,34 @@ class HistoryController extends Controller
 
     function setHistory(Request $request)
     {
+        $userCustomer_id = $request->get('userCustomer_id');
+        $origin = $request->get('origin');
+        $destination = $request->get('destination');
+        $date = date("Y-m-d");
+        $hour = $request->get('hour');
+        $fare = $request->get('fare');
+        $riderPercent = $request->get('riderPercent');
+        $companyPercent = $request->get('companyPercent');
+        $userRider_id = $request->get('userRider_id');
+        $historyId = $request->get('historyId');
+
+        $history = new History();
+        $history->userCustomer_id = $userCustomer_id;
+        $history->origin = $origin;
+        $history->destination = $destination;
+        $history->date = $date;
+        $history->hour = $hour;
+        $history->fare = $fare;
+        $history->riderPercent = $riderPercent;
+        $history->companyPercent = $companyPercent;
+        $history->userRider_id = $userRider_id;
+        $history->historyId = $historyId;
+
+        $history->save();
+
+        return response()->json([
+           'response' => 'success',
+        ]);
 
     }
 }

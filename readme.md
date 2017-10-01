@@ -391,3 +391,24 @@ rate_by: String (0 For By Rider, 1 for By customer)
     "response": "success"
 }
 ```
+####Set History
+Link: /sethistory
+
+Method: POST
+```
+userCustomer_id
+origin
+destination
+hour
+fare
+riderPercent
+companyPercent
+userRider_id
+historyId
+```
+#####On Response
+```
+{
+    "response": "success"
+}
+```
