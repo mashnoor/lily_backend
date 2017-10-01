@@ -255,7 +255,7 @@ phone: String
 On Success
 ```
 {
-    "result": "success",
+    "response": "success",
     "userdata": {
         "id": 12,
         "name": "hhhhh",
@@ -267,7 +267,8 @@ On Success
         "firstRide": 1,
         "token": "iugwuiwgfuywg",
         "address": "iuguygfueriufgbjb befhuebvfhu bv"
-    }
+    },
+    "rating": 3.5
 }
 ```
 On Failed

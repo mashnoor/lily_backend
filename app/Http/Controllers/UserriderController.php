@@ -106,6 +106,22 @@ class UserriderController extends Controller
             ]);
         }
     }
+    function getRiderRating($id)
+    {
+        $ratings = Rating::where('userRider_id', $id)->where('rateBy', '=', '1')->get();
+        $main_rating = 0.0;
+        if(count($ratings)<1)
+        {
+            return $main_rating;
+        }
+        foreach ($ratings as $rating)
+        {
+            $main_rating += doubleval($rating->value);
+
+        }
+        return $main_rating/doubleval(count($ratings));
+
+    }
 
     function getRiderProfile(Request $request)
     {
@@ -122,6 +138,7 @@ class UserriderController extends Controller
             return response()->json([
                 'response' => 'success',
                 'userdata' => $userRider,
+                'rating' => $this->getRiderRating($userRider->id),
             ]);
         }
 
