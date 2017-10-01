@@ -24,6 +24,7 @@ class NotificationController extends Controller
 
         $actual_sender = null;
         $actual_receiver = null;
+        $rating = 0.0;
 
         //Find the Actual Sender
         if (is_null($userRider_sender)) {
@@ -32,12 +33,14 @@ class NotificationController extends Controller
                     "response" => "sender token invalid"
                 ]);
             } else {
-                global $actual_sender;
+                global $actual_sender, $rating;
                 $actual_sender = $userCustomer_sender;
+                $rating = UsercustomerController::getCustomerRating($actual_sender->id);
             }
         } else {
-            global $actual_sender;
+            global $actual_sender, $rating;
             $actual_sender = $userRider_sender;
+            $rating = UserriderController::getRiderRating($actual_sender->id);
 
         }
 
@@ -62,6 +65,7 @@ class NotificationController extends Controller
         $post = array();
         $post["message"] = $message;
         $post["sender"] = $actual_sender;
+        $post["rating"] = $rating;
         return self::sendMessage($reg_ids, $post);
 
 

@@ -69,7 +69,7 @@ class UsercustomerController extends Controller
         ]);
     }
 
-    function getCustomerRating($id)
+    public static function getCustomerRating($id)
     {
         $ratings = Rating::where('userCustomer_id', $id)->where('rateBy', '=', '0')->get();
         $main_rating = 0.0;

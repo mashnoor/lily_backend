@@ -107,7 +107,7 @@ class UserriderController extends Controller
             ]);
         }
     }
-    function getRiderRating($id)
+    public static function getRiderRating($id)
     {
         $ratings = Rating::where('userRider_id', $id)->where('rateBy', '=', '1')->get();
         $main_rating = 0.0;
