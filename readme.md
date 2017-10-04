@@ -423,3 +423,31 @@ Method: GET
 ```
 [{"id":2,"message":"this is for rider","reciverType":"0","date":"2017-10-02"}]
 ```
+####Apply Promo
+Link: /applypromo
+
+
+Method: POST
+```
+token
+promocode
+```
+#####On Invalid User
+```
+{
+    "response": "token invalid"
+}
+```
+#####On Invalid Promo
+```
+{
+       "response": "promo invalid"
+}
+```
+#####On Success 
+```
+{
+    "response": "promo applied successfully",
+    "percentage": "50"
+}
+```
