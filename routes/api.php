@@ -28,3 +28,4 @@ Route::post('/getriderprofilebyphone', 'UserriderController@getRiderProfileByPho
 Route::post('/sendnotification', 'NotificationController@sendNotfication');
 Route::post('/setrating', 'RatingController@setRating');
 Route::post('/sethistory', 'HistoryController@setHistory');
+Route::get('/getnoticeboard/{cusType}', 'NoticeboardController@getNoticeBoard');
