@@ -412,3 +412,14 @@ historyId
     "response": "success"
 }
 ```
+####Get Noticeoard
+Link: /getnoticeboard/{type}
+
+type = (rider/customer)
+
+Method: GET
+
+#####On Response
+```
+[{"id":2,"message":"this is for rider","reciverType":"0","date":"2017-10-02"}]
+```
