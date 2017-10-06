@@ -36,11 +36,13 @@ class NotificationController extends Controller
                 global $actual_sender, $rating;
                 $actual_sender = $userCustomer_sender;
                 $rating = UsercustomerController::getCustomerRating($actual_sender->id);
+                $actual_sender->rating = $rating;
             }
         } else {
             global $actual_sender, $rating;
             $actual_sender = $userRider_sender;
             $rating = UserriderController::getRiderRating($actual_sender->id);
+            $actual_sender->rating = $rating;
 
         }
 
@@ -65,7 +67,7 @@ class NotificationController extends Controller
         $post = array();
         $post["message"] = $message;
         $post["sender"] = $actual_sender;
-        $post["rating"] = $rating;
+
         return self::sendMessage($reg_ids, $post);
 
 

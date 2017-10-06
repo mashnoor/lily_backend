@@ -136,10 +136,12 @@ class UserriderController extends Controller
         }
         else {
             $userRider = UserRider::where('id', $riderId)->first();
+            $rating = $this->getRiderRating($userRider->id);
+            $userRider->rating = $rating;
             return response()->json([
                 'response' => 'success',
                 'userdata' => $userRider,
-                'rating' => $this->getRiderRating($userRider->id),
+
             ]);
         }
 
