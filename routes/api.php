@@ -30,3 +30,4 @@ Route::post('/setrating', 'RatingController@setRating');
 Route::post('/sethistory', 'HistoryController@setHistory');
 Route::get('/getnoticeboard/{cusType}', 'NoticeboardController@getNoticeBoard');
 Route::post('/applypromo', 'PromoController@applyPromo');
+Route::post('/getspecificnotice', "SpecificNoticeBoardController@getNotice");
