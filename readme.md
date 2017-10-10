@@ -451,3 +451,24 @@ promocode
     "percentage": "50"
 }
 ```
+####Get Specific Noticeoard
+Link: /getspecificnotice
+
+Method: POST
+```
+id
+who: (rider/customer)
+```
+
+#####On Response
+```
+[
+    {
+        "id": 1,
+        "message": "This is a notice",
+        "noticeBoardcol": "notice",
+        "userRider_id": 16,
+        "userCustomer_id": null
+    }
+]
+```
