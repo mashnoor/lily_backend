@@ -14,3 +14,6 @@
 Route::get('/', function () {
     return view('welcome');
 });
+Route::get('dashboard', 'WebpanelController@getDashboard');
+Route::get('customerrides', 'WebpanelController@getMostActiveUsers');
+Route::get('earnings', 'WebpanelController@getEarnings');
