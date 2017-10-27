@@ -76,7 +76,7 @@ class WebpanelController extends Controller
 
         $allUnsuccessfulRides = UnsuccessfulRide::all();
         $allUnsuccessfulRide_modified = array();
-        $totalUnsuccessful = count($todayUnsuccessfulRides);
+        $totalUnsuccessful = count($allUnsuccessfulRide);
         foreach ($allUnsuccessfulRides as $allUnsuccessfulRide) {
             $rideType = UnsuccessfulRideType::where('id', '=', $allUnsuccessfulRide->unsuccessfullRideType_id)->first();
             $reason = "blank";
