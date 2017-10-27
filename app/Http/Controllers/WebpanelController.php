@@ -47,7 +47,7 @@ class WebpanelController extends Controller
     {
         $totalFare =  DB::table('history')->select(DB::raw('SUM(fare) AS totalFare'))->get();
         $riderPercent = DB::table('history')->select(DB::raw('SUM(riderPercent) AS totalRider'))->get();
-        $companyPercent = DB::table('history')->select(DB::raw('SUM(fare) AS companyPercent'))->get();
+        $companyPercent = DB::table('history')->select(DB::raw('SUM(companyPercent) AS companyPercent'))->get();
         //return $totalFare[0]->totalFare;
 
         return view('earnings', ['totalFare'=>$totalFare[0]->totalFare, 'riderPercent'=>$riderPercent[0]->totalRider, 'companyPercent'=>$companyPercent[0]->companyPercent]);
