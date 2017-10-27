@@ -29,6 +29,9 @@
             <li>
                 <a href="{{ url('earnings') }}">Earnings</a>
             </li>
+            <li>
+                <a href="{{ url('unsuccessfulrides') }}">Unsuccessful Rides</a>
+            </li>
 
 
 
