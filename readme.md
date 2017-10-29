@@ -400,14 +400,12 @@ userCustomer_id
 origin
 destination
 userRider_id
-distance
-duration
+distance (in km)
+duration (in minute)
 ```
 #####On Response
 ```
-{
-    "response": "success"
-}
+{"response":"success","detail":{"userCustomer_id":"16","origin":"Uttara","destination":"Shahbag","date":"2017-10-29","hour":"14","fare":210,"riderPercent":157.5,"companyPercent":52.5,"userRider_id":"4","historyId":"LSGD11","travelDuration":90,"travelDistance":9,"id":6}}
 ```
 ####Get Noticeoard
 Link: /getnoticeboard/{type}
