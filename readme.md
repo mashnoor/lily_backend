@@ -399,12 +399,9 @@ Method: POST
 userCustomer_id
 origin
 destination
-hour
-fare
-riderPercent
-companyPercent
 userRider_id
-historyId
+distance
+duration
 ```
 #####On Response
 ```
