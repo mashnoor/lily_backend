@@ -411,7 +411,7 @@ rideEndTime
 ```
 #####On Response
 ```
-{"response":"success","detail":{"userCustomer_id":"16","origin":"Uttara","destination":"Shahbag","date":"2017-10-29","hour":"14","fare":210,"riderPercent":157.5,"companyPercent":52.5,"userRider_id":"4","historyId":"LSGD11","travelDuration":90,"travelDistance":9,"id":6}}
+{"response":"success","detail":{"userCustomer_id":"16","origin":"Uttara","destination":"Shahbag","date":"2017-10-30","hour":"23","fare":210,"riderPercent":157.5,"companyPercent":52.5,"userRider_id":"4","historyId":"UFEBRV","travelDuration":90,"travelDistance":9,"destLat":"45","originLng":"56","destLng":"88","originLat":"66","rideStartTime":"22:40","rideEndTime":"23:40","promoAmount":0,"id":16}}
 ```
 ####Get Noticeoard
 Link: /getnoticeboard/{type}
