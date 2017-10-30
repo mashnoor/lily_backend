@@ -402,6 +402,12 @@ destination
 userRider_id
 distance (in km)
 duration (in minute)
+destLat
+originLng
+destLng
+originLat
+rideStartTime
+rideEndTime
 ```
 #####On Response
 ```

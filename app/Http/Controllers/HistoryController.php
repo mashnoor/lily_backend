@@ -77,6 +77,12 @@ class HistoryController extends Controller
         $historyId = $this->generateRandomString(6);
         $distanceTraveled = doubleval($request->get('distance'));
         $duration = doubleval($request->get('duration'));
+        $destLat = $request->get('destLat');
+        $originLng = $request->get('originLng');
+        $destLng = $request->get('destLng');
+        $originLat = $request->get('originLat');
+        $startTime = $request->get('rideStartTime');
+        $endTime = $request->get('rideEndTime');
 
 
         $farePerMinuteCol = Constant::where('variable', '=', 'farepermin')->first();
@@ -119,6 +125,14 @@ class HistoryController extends Controller
         $history->historyId = $historyId;
         $history->travelDuration = $duration;
         $history->travelDistance = $distanceTraveled;
+        $history->destLat = $destLat;
+        $history->originLng = $originLng;
+        $history->destLng = $destLng;
+        $history->originLat = $originLat;
+        $history->rideStartTime = $startTime;
+        $history->rideEndTime = $endTime;
+        $history->promoAmount = $discountAmount;
+
 
         $history->save();
 
