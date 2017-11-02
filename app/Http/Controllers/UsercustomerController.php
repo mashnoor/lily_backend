@@ -121,7 +121,7 @@ class UsercustomerController extends Controller
 
         $history = History::where('historyId', '=', $lastRideHistoryId)->first();
         return response()->json([
-            'response'=> 'last ride not found',
+            'response'=> 'last ride found',
             'history' => $history
         ]);
     }

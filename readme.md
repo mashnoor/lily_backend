@@ -466,3 +466,47 @@ who: (rider/customer)
     }
 ]
 ```
+
+####Get Last Ride
+Link: /getlastride/{userCustomer_id}
+
+Method: GET
+
+
+#####On Response
+######Success
+```
+{
+    "response": "last ride found",
+    "history": {
+        "id": 32,
+        "userCustomer_id": 16,
+        "origin": "Uttara",
+        "destLat": 45,
+        "originLng": 56,
+        "destination": "Shahbag",
+        "destLng": 88,
+        "originLat": 66,
+        "date": "2017-11-02",
+        "hour": 23,
+        "fare": 178,
+        "riderPercent": 133.5,
+        "companyPercent": 44.5,
+        "promoAmount": 0,
+        "promoCode_id": null,
+        "userRider_id": 4,
+        "userShareCode_id": null,
+        "historyId": "ODY1EG",
+        "travelDuration": 90,
+        "travelDistance": 9,
+        "rideStartTime": "22:40",
+        "rideEndTime": "23:40"
+    }
+}
+```
+######Failure
+```
+{
+    "response": "last ride not found"
+}
+```
