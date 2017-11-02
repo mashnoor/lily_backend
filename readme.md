@@ -304,7 +304,7 @@ customerid: String (Default Null)
 riderid: String (Default Null)
 causetype: String (1 --> byRider, 2-->byCustomer, 3-->byRiderNotFound)
 causeid: String (Similiar Values of Cause of customer or cause of rider table id)
-history_id: String
+
 ```
 #####On Response
 On Success
