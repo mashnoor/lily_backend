@@ -15,6 +15,7 @@ class UnsuccessfulRideController extends Controller
         $customerId = $request->get("customerid", null);
         $riderId = $request->get("riderid", null);
         $causeType = $request->get("causetype");
+        $causeid = $request->get('causeid');
         $unsuccessfulridetype = new UnsuccessfulRideType();
 
 
@@ -25,11 +26,13 @@ class UnsuccessfulRideController extends Controller
             $unsuccessfulridetype->save();
             $unsuccessfulridetype_id = $unsuccessfulridetype->id;
 
+
             $unsuccessfulride = new UnsuccessfulRide();
             $unsuccessfulride->userCustomer_id = $customerId;
             $unsuccessfulride->userRider_id = $riderId;
             $unsuccessfulride->unsuccessfullRideType_id = $unsuccessfulridetype_id;
             $unsuccessfulride->date = date("Y-m-d");
+            $unsuccessfulride->causeOfCustomer_id = $causeid;
             $unsuccessfulride->save();
             return response()->json([
                 "response"=>"success",
@@ -49,6 +52,7 @@ class UnsuccessfulRideController extends Controller
             $unsuccessfulride->userRider_id = $riderId;
             $unsuccessfulride->unsuccessfullRideType_id = $unsuccessfulridetype_id;
             $unsuccessfulride->date = date("Y-m-d");
+            $unsuccessfulride->causeOfCustomer_id = $causeid;
             $unsuccessfulride->save();
             return response()->json([
                 "response"=>"success",

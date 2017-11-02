@@ -136,6 +136,10 @@ class HistoryController extends Controller
 
         $history->save();
 
+        $userCustomer = UserCustomer::where('id', '=', $userCustomer_id)->first();
+        $userCustomer->history_historyId = $historyId;
+        $userCustomer->save();
+
         return response()->json([
             'response' => 'success',
             'detail' => $history
