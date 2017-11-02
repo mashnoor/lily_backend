@@ -188,6 +188,7 @@ Method: POST
 message: String
 userCustomer_id: String
 userRider_id: String
+history_id: String(Optional)
 ```
 
 On Response
@@ -304,21 +305,11 @@ customerid: String (Default Null)
 riderid: String (Default Null)
 causetype: String (1 --> byRider, 2-->byCustomer, 3-->byRiderNotFound)
 causeid: String (Similiar Values of Cause of customer or cause of rider table id)
-
 ```
 #####On Response
 On Success
 ```
-{
-	"response": "success",
-	"unsuccessfulridedetail": {
-		"userCustomer_id": "1",
-		"userRider_id": "1",
-		"unsuccessfullRideType_id": 1,
-		"date": "2017-09-26",
-		"id": 1
-	}
-}
+{"response":"success","unsuccessfulridedetail":{"userCustomer_id":"16","userRider_id":null,"unsuccessfullRideType_id":15,"date":"2017-11-02","causeOfCustomer_id":"1","id":14}}
 ```
 ####Get Rider Profile (By Phone)
 Link: /getriderprofilebyphone
