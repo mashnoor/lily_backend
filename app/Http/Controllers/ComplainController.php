@@ -12,11 +12,13 @@ class ComplainController extends Controller
         $message = $request->get("message");
         $userCustomer_id = $request->get("userCustomer_id");
         $userRider_id = $request->get("userRider_id");
+        $history_id = $request->get('history_id');
         $complain = new Complain();
         $complain->message = $message;
         $complain->userCustomer_id = $userCustomer_id;
         $complain->userRider_id = $userRider_id;
         $complain->date = date("Y-m-d");
+        $complain->history_id = $history_id;
         $complain->save();
         return response()->json([
             "response" => "complain added successfully",
