@@ -31,3 +31,4 @@ Route::post('/sethistory', 'HistoryController@setHistory');
 Route::get('/getnoticeboard/{cusType}', 'NoticeboardController@getNoticeBoard');
 Route::post('/applypromo', 'PromoController@applyPromo');
 Route::post('/getspecificnotice', "SpecificNoticeBoardController@getNotice");
+Route::get('/getlastride/{id}', 'UsercustomerController@getLastRide');

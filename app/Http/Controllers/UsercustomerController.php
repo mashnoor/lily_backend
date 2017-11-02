@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\History;
 use App\Rating;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
@@ -9,7 +10,8 @@ use App\UserCustomer;
 
 class UsercustomerController extends Controller
 {
-    function generateRandomString($length = 10) {
+    function generateRandomString($length = 10)
+    {
         $characters = '0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ';
         $charactersLength = strlen($characters);
         $randomString = '';
@@ -18,6 +20,7 @@ class UsercustomerController extends Controller
         }
         return $randomString;
     }
+
     function signup(Request $request)
     {
         $name = $request->get('name');
@@ -39,8 +42,7 @@ class UsercustomerController extends Controller
             $user->picture = $picture;
 
 
-            if(!$user->firstRide == "0")
-            {
+            if (!$user->firstRide == "0") {
                 $user->firstRide = $firstRide;
             }
 
@@ -65,7 +67,7 @@ class UsercustomerController extends Controller
         $userCustomer->save();
         return response()->json([
             'result' => 'success',
-            'userdata'=>$userCustomer,
+            'userdata' => $userCustomer,
         ]);
     }
 
@@ -73,40 +75,54 @@ class UsercustomerController extends Controller
     {
         $ratings = Rating::where('userCustomer_id', $id)->where('rateBy', '=', '0')->get();
         $main_rating = 0.0;
-        if(count($ratings)<1)
-        {
+        if (count($ratings) < 1) {
             return $main_rating;
         }
-        foreach ($ratings as $rating)
-        {
+        foreach ($ratings as $rating) {
             $main_rating += doubleval($rating->value);
 
         }
-        return $main_rating/doubleval(count($ratings));
+        return $main_rating / doubleval(count($ratings));
 
     }
 
     function getCustomerProfile(Request $request)
     {
         $phone = $request->get('phone');
-       
+
         $user = UserCustomer::where("phone", $phone)->first();
-        if(is_null($user))
-        {
+        if (is_null($user)) {
             return response()->json([
                 "response" => "couldn't find customer profile",
             ]);
-        }
-        else
-        {
+        } else {
             return response()->json([
                 'response' => 'success',
-                'userdata'=>$user,
+                'userdata' => $user,
                 'rating' => $this->getCustomerRating($user->id),
 
             ]);
         }
 
 
+    }
+    function getLastRide($id)
+    {
+        $userCustomer = UserCustomer::where('id', '=', $id)->first();
+        $lastRideHistoryId = $userCustomer->history_historyId;
+        if(is_null($lastRideHistoryId))
+        {
+            return response()->json([
+                'response'=> 'last ride not found'
+            ]);
+        }
+        $userCustomer->history_historyId = null;
+        $userCustomer->save();
+
+        $history = History::where('historyId', '=', $lastRideHistoryId)->first();
+        return response()->json([
+            'response'=> 'last ride not found',
+            'history' => $history
+        ]);
     }
 }
