@@ -128,9 +128,9 @@ class UserriderController extends Controller
 
     function applyShareCode(Request $request)
     {
-        $id = $request->get('userrider_id');
+        $rider_token = $request->get('rider_token');
         $shareCode = $request->get('share_code');
-        $userRider = UserRider::where('id', '=', $id)->first();
+        $userRider = UserRider::where('token', '=', $rider_token)->first();
         $riderShareAmount = Constant::where('variable', '=', 'ridershareamount')->first();
         $riderShareAmount = doubleval($riderShareAmount->value);
         if($userRider->firstRide!="1")

@@ -515,14 +515,16 @@ Link: /applyridersharecode
 
 Method: POST
 ```
-userrider_id
+rider_token
 share_code
 ```
 
 #####On Response
 ######On Invalid Code
 ```
-share_code
+{
+    "response": "not valid share code"
+}
 ```
 ######On Successful Apply
 ```
