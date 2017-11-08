@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Constant;
 use App\Rating;
 use App\UserCustomer;
 use App\UserRider;
@@ -122,6 +123,40 @@ class UserriderController extends Controller
 
         }
         return $main_rating/doubleval(count($ratings));
+
+    }
+
+    function applyShareCode(Request $request)
+    {
+        $id = $request->get('userrider_id');
+        $shareCode = $request->get('share_code');
+        $userRider = UserRider::where('id', '=', $id)->first();
+        $riderShareAmount = Constant::where('variable', '=', 'ridershareamount')->first();
+        $riderShareAmount = doubleval($riderShareAmount->value);
+        if($userRider->firstRide!="1")
+        {
+            return response()->json([
+               "response"=>"not first ride"
+            ]);
+        }
+        $anotherUserRider = UserRider::where('shareCode', '=', $shareCode)->first();
+        if(is_null($anotherUserRider))
+        {
+            return response()->json([
+                "response"=>"not valid share code"
+            ]);
+        }
+        $userRider->moneyDue = doubleval($userRider->moneyDue) - $riderShareAmount;
+        $userRider->firstRide = "0";
+        $userRider->save();
+
+        $anotherUserRider->moneyDue = doubleval($anotherUserRider->moneyDue) - $riderShareAmount;
+        $anotherUserRider->save();
+        return response()->json([
+           "response" => "successfully applied share code",
+            "value" => $riderShareAmount
+        ]);
+
 
     }
 
