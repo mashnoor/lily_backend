@@ -510,3 +510,31 @@ Method: GET
     "response": "last ride not found"
 }
 ```
+####Apply Rider Share Code
+Link: /applyridersharecode
+
+Method: POST
+```
+userrider_id
+share_code
+```
+
+#####On Response
+######On Invalid Code
+```
+share_code
+```
+######On Successful Apply
+```
+{
+    "response": "successfully applied share code",
+    "value": 100
+}
+```
+######On Not First Ride
+```
+{
+    "response": "not first ride"
+}
+```
+
