@@ -148,6 +148,7 @@ class UserriderController extends Controller
         }
         $userRider->moneyDue = doubleval($userRider->moneyDue) - $riderShareAmount;
         $userRider->firstRide = "0";
+        $userRider->appliedShareCode = $shareCode;
         $userRider->save();
 
         $anotherUserRider->moneyDue = doubleval($anotherUserRider->moneyDue) - $riderShareAmount;
