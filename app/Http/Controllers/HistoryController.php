@@ -103,13 +103,14 @@ class HistoryController extends Controller
 
 
         $fakeFare = $baseFare + $fareperkm * $distanceTraveled + $duration * $farePerMinute;
+        $companyFakeFare = $fakeFare * ($companyPercentage / 100.0);
 
         $discountAmount = $fakeFare * ($promoPercent / 100.0);
         $actualFare = $fakeFare - $discountAmount;
 
-        $companyFare = $fakeFare * ($companyPercentage / 100.0) - $discountAmount;
+        $companyFare = $companyFakeFare - $discountAmount;
 
-        $riderPercent = $fakeFare - $companyFare;
+        $riderPercent = $fakeFare - $companyFakeFare;
 
 
         $history = new History();
@@ -139,6 +140,12 @@ class HistoryController extends Controller
         $userCustomer = UserCustomer::where('id', '=', $userCustomer_id)->first();
         $userCustomer->history_historyId = $historyId;
         $userCustomer->save();
+
+        $userRider = UserRider::where('id', '=', $userRider_id)->first();
+        $moneyDue = doubleval($userRider->moneyDue);
+        $moneyDue += $companyFare;
+        $userRider->moneyDue = $moneyDue;
+        $userRider->save();
 
         return response()->json([
             'response' => 'success',

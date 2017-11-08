@@ -55,6 +55,7 @@ class UserriderController extends Controller
 
             $user->firstRide = $firstRide;
             $user->address = $address;
+            $user->moneyDue = "0";
 
             $user->save();
             return response()->json([
