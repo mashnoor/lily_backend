@@ -32,6 +32,9 @@
             <li>
                 <a href="{{ url('unsuccessfulrides') }}">Unsuccessful Rides</a>
             </li>
+            <li>
+                <a href="{{ url('constants') }}">Constants</a>
+            </li>
 
 
 

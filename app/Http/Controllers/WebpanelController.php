@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Constant;
 use App\History;
 use App\UnsuccessfulRide;
 use App\UnsuccessfulRideType;
@@ -96,5 +97,11 @@ class WebpanelController extends Controller
             'allunsuccessfulrides' => $allUnsuccessfulRide_modified,
             'totalUnsuccessful' => $totalUnsuccessful
         ]);
+    }
+
+    function getConstants()
+    {
+        $cons = Constant::all();
+        return view('constants', ['constants'=>$cons]);
     }
 }
