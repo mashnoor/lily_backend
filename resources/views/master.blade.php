@@ -27,6 +27,9 @@
                 <a href="{{ url('customerrides') }}">Customer Rides</a>
             </li>
             <li>
+                <a href="{{ url('riders') }}">Riders</a>
+            </li>
+            <li>
                 <a href="{{ url('earnings') }}">Earnings</a>
             </li>
             <li>
@@ -34,6 +37,9 @@
             </li>
             <li>
                 <a href="{{ url('constants') }}">Constants</a>
+            </li>
+            <li>
+                <a href="{{ url('banned') }}">Banned Riders</a>
             </li>
 
 

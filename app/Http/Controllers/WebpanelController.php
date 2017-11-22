@@ -7,6 +7,8 @@ use App\History;
 use App\UnsuccessfulRide;
 use App\UnsuccessfulRideType;
 use App\UserCustomer;
+use App\UserRider;
+
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
@@ -104,4 +106,141 @@ class WebpanelController extends Controller
         $cons = Constant::all();
         return view('constants', ['constants'=>$cons]);
     }
+
+
+    function search_at_Customer_rides(Request $request)
+    {
+
+        $output="";
+
+        $usrs= UserCustomer::where("name", "=", $request->search)->get();
+        $users_id= UserCustomer::where("id", "=", $request->search)->get();
+        foreach ($users_id as $usr_id) {
+            $usrs->push($usr_id);
+        }
+        $users_phone= UserCustomer::where("phone", "=", $request->search)->get();
+        foreach ($users_phone as $usr_id) {
+            $usrs->push($usr_id);
+        }
+        $user_email = UserCustomer::where("email", "=", $request->search)->get();
+
+        foreach ($user_email as $usr_id) {
+            $usrs->push($usr_id);
+        }
+
+        $user_shareCode = UserCustomer::where("shareCode", "=", $request->search)->get();
+
+        foreach ($user_shareCode as $usr_id) {
+            $usrs->push($usr_id);
+        }
+
+
+        $users=array();
+
+        foreach ($usrs as $usr) {
+            $usersWhoRide =History::where('userCustomer_id',"=",$usr->id)->count();
+            $curr_user=$usr;
+            $curr_user['cnt']=$usersWhoRide;
+            array_push($users, $curr_user);
+        }
+
+
+        return view('customerrides')->with('users',$users);
+
+
+
+
+    }
+
+
+    function UserCustomerProfile( $id)
+    {
+        //$user = UserCustomer::find($name);
+        $user = DB::table('usercustomer')->where('id', '=', $id)->get();
+        $userHistory=DB::table('history')->where('userCustomer_id', '=', $id)->get();
+
+        return view('usercustomerprofile')->with('user',$user)->with('userHistory',$userHistory);
+
+
+    }
+
+    public function UserRiders()
+    {
+        $UserRiders=DB::table('userrider')->get();
+
+        return view('userriders', compact("UserRiders"));
+    }
+
+
+
+
+    function search_at_User_Riders(Request $request)
+    {
+
+        $output="";
+        //    $users = UserCustomer::where("roll", "=", $request->search)->get();
+        $UserRiders= UserRider::where("name", "=", $request->search)->get();
+        $users_id= UserRider::where("id", "=", $request->search)->get();
+        foreach ($users_id as $usr_id) {
+            $UserRiders->push($usr_id);
+        }
+        $users_phone= UserRider::where("phone", "=", $request->search)->get();
+        foreach ($users_phone as $usr_id) {
+            $UserRiders->push($usr_id);
+        }
+        $user_email = UserRider::where("email", "=", $request->search)->get();
+
+        foreach ($user_email as $usr_id) {
+            $UserRiders->push($usr_id);
+        }
+
+        $user_shareCode = UserRider::where("shareCode", "=", $request->search)->get();
+
+        foreach ($user_shareCode as $usr_id) {
+            $UserRiders->push($usr_id);
+        }
+
+
+        return view('userriders')->with('UserRiders',$UserRiders);
+    }
+
+    function userRidersProfile( $id)
+    {
+        //$user = UserCustomer::find($name);
+        $user = DB::table('userrider')->where('id', '=', $id)->get();
+        // $status = $user->status;
+        $userHistory=DB::table('history')->where('userRider_id', '=', $id)->get();
+//$users = DB::table('usercustomer') ->get();
+        return view('userriderprofile')->with('user',$user)->with('userHistory',$userHistory);
+
+
+    }
+
+    function Update_UserRiders_status(Request $request)
+    {
+// $boolean= DB::table('userrider')->where('id', '=', $id)->get();
+//  $boolean->status = 1;
+
+//  $boolean -> update();
+//   return view('userriderprofile')->with('boolean',$boolean);
+
+        $visita = UserRider::find($request->id);
+        if($visita->status=="0")
+        {
+            $visita->status = "1";}
+        else { $visita->status = "0";}
+        $visita->update();
+
+        return redirect()->back()->with('message', 'visita updated');
+    }
+
+
+    function Banned_Riders()
+    {
+
+        $Banned_Riders= DB::table('userrider')->where('status', '=', "1")->get();
+        return view('bannedriders')->with('Banned_Riders',$Banned_Riders);
+    }
+
+
 }

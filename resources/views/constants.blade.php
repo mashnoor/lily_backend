@@ -18,7 +18,7 @@
                     <td>{{ $constant->id }}</td>
                     <td>{{ $constant->variable }}</td>
                     <td>{{ $constant->value }} TK.</td>
-                    <td><a href="#" class="btn btn-primary btn-md active" role="button" aria-pressed="true">Edit</a></td>
+                    <td><a href="/constants/{{}}" class="btn btn-primary btn-md active" role="button" aria-pressed="true">Edit</a></td>
 
 
                 </tr>
