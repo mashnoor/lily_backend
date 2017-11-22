@@ -156,8 +156,8 @@ class WebpanelController extends Controller
     function UserCustomerProfile( $id)
     {
         //$user = UserCustomer::find($name);
-        $user = DB::table('usercustomer')->where('id', '=', $id)->get();
-        $userHistory=DB::table('history')->where('userCustomer_id', '=', $id)->get();
+        $user = UserCustomer::where('id', '=', $id)->get();
+        $userHistory=History::where('userCustomer_id', '=', $id)->get();
 
         return view('usercustomerprofile')->with('user',$user)->with('userHistory',$userHistory);
 
@@ -166,7 +166,7 @@ class WebpanelController extends Controller
 
     public function UserRiders()
     {
-        $UserRiders=DB::table('userrider')->get();
+        $UserRiders=UserRider::all();
 
         return view('userriders', compact("UserRiders"));
     }
@@ -207,9 +207,9 @@ class WebpanelController extends Controller
     function userRidersProfile( $id)
     {
         //$user = UserCustomer::find($name);
-        $user = DB::table('userrider')->where('id', '=', $id)->get();
+        $user = UserRider::where('id', '=', $id)->get();
         // $status = $user->status;
-        $userHistory=DB::table('history')->where('userRider_id', '=', $id)->get();
+        $userHistory=History::where('userRider_id', '=', $id)->get();
 //$users = DB::table('usercustomer') ->get();
         return view('userriderprofile')->with('user',$user)->with('userHistory',$userHistory);
 
@@ -238,7 +238,7 @@ class WebpanelController extends Controller
     function Banned_Riders()
     {
 
-        $Banned_Riders= DB::table('userrider')->where('status', '=', "1")->get();
+        $Banned_Riders= UserRider::where('status', '=', "1")->get();
         return view('bannedriders')->with('Banned_Riders',$Banned_Riders);
     }
 
