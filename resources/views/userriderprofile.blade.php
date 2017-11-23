@@ -73,7 +73,7 @@
             <table class="table table-bordered table-striped">
                 <tr>
                     <th>History ID</th>
-                  
+
                     <th>Origin</th>
                     <th>Destination</th>
                     <th>Fare</th>
@@ -100,7 +100,7 @@
                         <td>{{ $history->travelDuration }}</td>
                         <td>{{ $history->travelDistance }}</td>
                         <td>{{ $history->rideStartTime }}</td>
-                        <td>{{ $history->rideEndTIme }}</td>
+                        <td>{{ $history->rideEndTime }}</td>
 
                     </tr>
 
