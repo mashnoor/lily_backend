@@ -73,8 +73,7 @@
             <table class="table table-bordered table-striped">
                 <tr>
                     <th>History ID</th>
-                    <th>From</th>
-                    <th>To</th>
+                  
                     <th>Origin</th>
                     <th>Destination</th>
                     <th>Fare</th>
