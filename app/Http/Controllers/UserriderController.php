@@ -11,7 +11,8 @@ use Illuminate\Http\Request;
 
 class UserriderController extends Controller
 {
-    function generateRandomString($length = 10) {
+    function generateRandomString($length = 10)
+    {
         $characters = '0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ';
         $charactersLength = strlen($characters);
         $randomString = '';
@@ -20,6 +21,7 @@ class UserriderController extends Controller
         }
         return $randomString;
     }
+
     function signup(Request $request)
     {
         $name = $request->get('name');
@@ -51,7 +53,6 @@ class UserriderController extends Controller
             $user->userPic = $userPic;
             $user->email = $email;
             $user->status = $status;
-
 
 
             $user->firstRide = $firstRide;
@@ -91,38 +92,35 @@ class UserriderController extends Controller
             'userdata' => $userRider,
         ]);
     }
+
     function getRiderProfileByPhone(Request $request)
     {
         $phone = $request->get('riderphone');
         $userRider = UserRider::where('phone', $phone)->first();
-        if(is_null($userRider))
-        {
+        if (is_null($userRider)) {
             return response()->json([
-               'response' => 'rider not found'
+                'response' => 'rider not found'
             ]);
-        }
-        else
-        {
+        } else {
             return response()->json([
-               'response' => 'success',
+                'response' => 'success',
                 'userdata' => $userRider
             ]);
         }
     }
+
     public static function getRiderRating($id)
     {
         $ratings = Rating::where('userRider_id', $id)->where('rateBy', '=', '1')->get();
         $main_rating = 0.0;
-        if(count($ratings)<1)
-        {
+        if (count($ratings) < 1) {
             return $main_rating;
         }
-        foreach ($ratings as $rating)
-        {
+        foreach ($ratings as $rating) {
             $main_rating += doubleval($rating->value);
 
         }
-        return $main_rating/doubleval(count($ratings));
+        return $main_rating / doubleval(count($ratings));
 
     }
 
@@ -133,17 +131,15 @@ class UserriderController extends Controller
         $userRider = UserRider::where('token', '=', $rider_token)->first();
         $riderShareAmount = Constant::where('variable', '=', 'ridershareamount')->first();
         $riderShareAmount = doubleval($riderShareAmount->value);
-        if($userRider->firstRide!="1")
-        {
+        if ($userRider->firstRide != "1") {
             return response()->json([
-               "response"=>"not first ride"
+                "response" => "not first ride"
             ]);
         }
         $anotherUserRider = UserRider::where('shareCode', '=', $shareCode)->first();
-        if(is_null($anotherUserRider))
-        {
+        if (is_null($anotherUserRider)) {
             return response()->json([
-                "response"=>"not valid share code"
+                "response" => "not valid share code"
             ]);
         }
         $userRider->moneyDue = doubleval($userRider->moneyDue) - $riderShareAmount;
@@ -154,7 +150,7 @@ class UserriderController extends Controller
         $anotherUserRider->moneyDue = doubleval($anotherUserRider->moneyDue) - $riderShareAmount;
         $anotherUserRider->save();
         return response()->json([
-           "response" => "successfully applied share code",
+            "response" => "successfully applied share code",
             "value" => $riderShareAmount
         ]);
 
@@ -170,8 +166,7 @@ class UserriderController extends Controller
             return response()->json([
                 "response" => "couldn't find rider",
             ]);
-        }
-        else {
+        } else {
             $userRider = UserRider::where('id', $riderId)->first();
             $rating = $this->getRiderRating($userRider->id);
             $userRider->rating = $rating;
@@ -183,5 +178,20 @@ class UserriderController extends Controller
         }
 
 
+    }
+    function getMoneyDue(Request $request)
+    {
+        $riderToken = $request->get('ridertoken');
+        $userRider = UserRider::where('token', '=', $riderToken)->first();
+        if(isNull($userRider))
+        {
+            return response()->json([
+               'response' => 'token not valid'
+            ]);
+        }
+        else
+        {
+            return $userRider;
+        }
     }
 }

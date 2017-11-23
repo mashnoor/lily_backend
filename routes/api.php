@@ -33,3 +33,4 @@ Route::post('/applypromo', 'PromoController@applyPromo');
 Route::post('/getspecificnotice', "SpecificNoticeBoardController@getNotice");
 Route::get('/getlastride/{id}', 'UsercustomerController@getLastRide');
 Route::post('/applyridersharecode', 'UserriderController@applyShareCode');
+Route::post('/getmoneydue', 'UserriderController@getMoneyDue');
