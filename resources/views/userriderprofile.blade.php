@@ -89,7 +89,7 @@
                 </tr>
                 @foreach($userHistory as $history)
                     <tr>
-                        <td>{{ $history->$historyId }}</td>
+                        <td>{{ $history->historyId }}</td>
 
                         <td>{{ $history->origin }}</td>
                         <td>{{ $history->destination }}</td>

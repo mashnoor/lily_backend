@@ -206,7 +206,7 @@ class WebpanelController extends Controller
         $user = UserRider::where('id', '=', $id)->get();
         // $status = $user->status;
         $userHistory = History::where('userRider_id', '=', $id)->get();
-        
+
 
         return view('userriderprofile')->with('user', $user)->with('userHistory', $userHistory);
 
