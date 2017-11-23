@@ -104,21 +104,21 @@ class WebpanelController extends Controller
     function getConstants()
     {
         $cons = Constant::all();
-        return view('constants', ['constants'=>$cons]);
+        return view('constants', ['constants' => $cons]);
     }
 
 
     function search_at_Customer_rides(Request $request)
     {
 
-        $output="";
+        $output = "";
 
-        $usrs= UserCustomer::where("name", "=", $request->search)->get();
-        $users_id= UserCustomer::where("id", "=", $request->search)->get();
+        $usrs = UserCustomer::where("name", "=", $request->search)->get();
+        $users_id = UserCustomer::where("id", "=", $request->search)->get();
         foreach ($users_id as $usr_id) {
             $usrs->push($usr_id);
         }
-        $users_phone= UserCustomer::where("phone", "=", $request->search)->get();
+        $users_phone = UserCustomer::where("phone", "=", $request->search)->get();
         foreach ($users_phone as $usr_id) {
             $usrs->push($usr_id);
         }
@@ -135,56 +135,52 @@ class WebpanelController extends Controller
         }
 
 
-        $users=array();
+        $users = array();
 
         foreach ($usrs as $usr) {
-            $usersWhoRide =History::where('userCustomer_id',"=",$usr->id)->count();
-            $curr_user=$usr;
-            $curr_user['cnt']=$usersWhoRide;
+            $usersWhoRide = History::where('userCustomer_id', "=", $usr->id)->count();
+            $curr_user = $usr;
+            $curr_user['cnt'] = $usersWhoRide;
             array_push($users, $curr_user);
         }
 
 
-        return view('customerrides')->with('users',$users);
-
-
+        return view('customerrides')->with('users', $users);
 
 
     }
 
 
-    function UserCustomerProfile( $id)
+    function UserCustomerProfile($id)
     {
         //$user = UserCustomer::find($name);
         $user = UserCustomer::where('id', '=', $id)->get();
-        $userHistory=History::where('userCustomer_id', '=', $id)->get();
+        $userHistory = History::where('userCustomer_id', '=', $id)->get();
 
-        return view('usercustomerprofile')->with('user',$user)->with('userHistory',$userHistory);
+        return view('usercustomerprofile')->with('user', $user)->with('userHistory', $userHistory);
 
 
     }
 
     public function UserRiders()
     {
-        $UserRiders=UserRider::all();
+        $UserRiders = UserRider::all();
 
         return view('userriders', compact("UserRiders"));
     }
 
 
-
-
     function search_at_User_Riders(Request $request)
     {
 
-        $output="";
+        $output = "";
         //    $users = UserCustomer::where("roll", "=", $request->search)->get();
-        $UserRiders= UserRider::where("name", "=", $request->search)->get();
-        $users_id= UserRider::where("id", "=", $request->search)->get();
+        $UserRiders = UserRider::where("name", "=", $request->search)->get();
+        $users_id = UserRider::where("id", "=", $request->search)->get();
         foreach ($users_id as $usr_id) {
             $UserRiders->push($usr_id);
         }
-        $users_phone= UserRider::where("phone", "=", $request->search)->get();
+        $users_phone = UserRider::where("phone", "=", $request->search)->get();
         foreach ($users_phone as $usr_id) {
             $UserRiders->push($usr_id);
         }
@@ -201,34 +197,31 @@ class WebpanelController extends Controller
         }
 
 
-        return view('userriders')->with('UserRiders',$UserRiders);
+        return view('userriders')->with('UserRiders', $UserRiders);
     }
 
-    function userRidersProfile( $id)
+    function userRidersProfile($id)
     {
         //$user = UserCustomer::find($name);
         $user = UserRider::where('id', '=', $id)->get();
         // $status = $user->status;
-        $userHistory=History::where('userRider_id', '=', $id)->get();
-//$users = DB::table('usercustomer') ->get();
-        return view('userriderprofile')->with('user',$user)->with('userHistory',$userHistory);
+        $userHistory = History::where('userRider_id', '=', $id)->get();
+        
+
+        return view('userriderprofile')->with('user', $user)->with('userHistory', $userHistory);
 
 
     }
 
     function Update_UserRiders_status(Request $request)
     {
-// $boolean= DB::table('userrider')->where('id', '=', $id)->get();
-//  $boolean->status = 1;
-
-//  $boolean -> update();
-//   return view('userriderprofile')->with('boolean',$boolean);
 
         $visita = UserRider::find($request->id);
-        if($visita->status=="0")
-        {
-            $visita->status = "1";}
-        else { $visita->status = "0";}
+        if ($visita->status == "0") {
+            $visita->status = "1";
+        } else {
+            $visita->status = "0";
+        }
         $visita->update();
 
         return redirect()->back()->with('message', 'visita updated');
@@ -238,8 +231,8 @@ class WebpanelController extends Controller
     function Banned_Riders()
     {
 
-        $Banned_Riders= UserRider::where('status', '=', "1")->get();
-        return view('bannedriders')->with('Banned_Riders',$Banned_Riders);
+        $Banned_Riders = UserRider::where('status', '=', "1")->get();
+        return view('bannedriders')->with('Banned_Riders', $Banned_Riders);
     }
 
 
