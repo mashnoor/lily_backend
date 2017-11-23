@@ -540,3 +540,22 @@ share_code
 }
 ```
 
+####Apply Rider Share Code
+Link: /getmoneydue
+
+Method: POST
+```
+ridertoken
+```
+#####On Response
+######On Invalid Code
+```
+{
+    "response": "token not valid"
+}
+
+```
+######On Success
+```
+{"id":8,"name":"Tushar Monirul","phone":"+8801722043601","email":"wtushar09@gmail.com","nidNumber":null,"licenseNO":"Rfsarygh","registrationNO":"Fggcfg","licensePic":"https:\/\/firebasestorage.googleapis.com\/v0\/b\/lily-55a88.appspot.com\/o\/riders%2Fimages%2F%2B8801722043601%2Flicense_Rfsarygh?alt=media&token=210cefe9-e1ba-4fdf-913d-756b6390765e","registrationPic":"https:\/\/firebasestorage.googleapis.com\/v0\/b\/lily-55a88.appspot.com\/o\/riders%2Fimages%2F%2B8801722043601%2Fregistration_Fggcfg?alt=media&token=9f4793ab-0ebc-4b15-bb75-1c8fce704d26","userPic":"https:\/\/firebasestorage.googleapis.com\/v0\/b\/lily-55a88.appspot.com\/o\/riders%2Fimages%2F%2B8801722043601%2Fprofile_photo?alt=media&token=021e502a-63d4-4dfd-bcdf-fc007432e6ed","date":"2017-09-27","shareCode":"OUCON5","firstRide":null,"token":"d-gv67Nf1m4:APA91bH4POCOCz3mjNgL_MitduMITNypqZnyBsf6QUJxDBjPKMWv84vE0ndm4eK6HidGvuZXiGJuA3tqZ6zbiA1LeTQBrWAt_uE-_9UGs6_neoTAO3ScO0hNUl1hW0c32YfVXw6KJdZV","status":"1","freelancer":1,"address":"mirpur","appliedShareCode":"000MNC","moneyDue":6.25}
+```
