@@ -183,7 +183,7 @@ class UserriderController extends Controller
     {
         $riderToken = $request->get('ridertoken');
         $userRider = UserRider::where('token', '=', $riderToken)->first();
-        if(isNull($userRider))
+        if(is_null($userRider))
         {
             return response()->json([
                'response' => 'token not valid'
