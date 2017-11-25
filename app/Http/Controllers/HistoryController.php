@@ -43,6 +43,7 @@ class HistoryController extends Controller
             $userId = $userRIder->id;
             $histories = History::where('userRider_id', $userId)->get();
             return response()->json([
+                "profileStatus" => $userRIder->status,
                 "response" => "rider found successfully",
                 "histories" => $histories
             ]);
