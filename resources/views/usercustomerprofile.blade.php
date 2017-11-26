@@ -53,7 +53,7 @@
                     <th>Rider Percent</th>
                     <th>Company Percent</th>
                     <th>Promo Amount</th>
-                    <th>User Customer ID</th>
+                    <th>Rider Customer ID</th>
                     <th>Duration</th>
                     <th>Travel Distance</th>
                     <th>Ride Start Time</th>
@@ -69,7 +69,7 @@
                         <td>{{ $history->riderPercent }}</td>
                         <td>{{ $history->companyPercent }}</td>
                         <td>{{ $history->promoAmount }}</td>
-                        <td><a href="/profile/{{$history->userCustomer_id}}">{{ $history->userCustomer_id }}</a></td>
+                        <td><a href="/rider/profile/{{$history->userRider_id}}">{{ $history->userRider_id }}</a></td>
                         <td>{{ $history->travelDuration }}</td>
                         <td>{{ $history->travelDistance }}</td>
                         <td>{{ $history->rideStartTime }}</td>
