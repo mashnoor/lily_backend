@@ -23,6 +23,7 @@ route::get('profile/{name}','WebpanelController@UserCustomerProfile');
 Route::get('riders', 'WebpanelController@UserRiders');
 Route::get('/riders/search', 'WebpanelController@search_at_User_Riders');
 route::get('riders/profile/{name}','WebpanelController@userRidersProfile');
+route::post('money/{name}','WebpanelController@getMoney');
 
 Route::get('earnings', 'WebpanelController@getEarnings');
 Route::get('unsuccessfulrides', 'WebpanelController@getUnsuccessfulRides');

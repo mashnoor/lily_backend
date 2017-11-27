@@ -242,21 +242,26 @@ class WebpanelController extends Controller
         return view('history')->with('histories',$histories);
     }
 
-    function getMoney()
+    function getMoney(Request $request ,$id )
     {
 
+ $money =UserRider::find($id);
 
+$taka= $money->moneyDue - $request->number;
+$money->moneyDue = $taka;
+$money->update();
+ return redirect()->back();
     }
 
    public function searchHistory(Request $fromDate) {
 
  
-    // $from = $fromDate->date;
-    // $to= $fromDate->date1;
+     // $from = $fromDate->date;
+     // $to= $fromDate->date;
 
-    $from = "2017-09-01";
+     $from = "2017-09-01";
 
-    $to = "2017-11-02";
+     $to = "2017-10-03";
 
           $histories = History::whereBetween('date', [$from, $to])->get();
           return view('history')->with('histories',$histories); 

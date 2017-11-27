@@ -39,7 +39,7 @@
       </div>
      </div>
      <div class="form-group ">
-      <label class="control-label " for="date1">
+      <label class="control-label " for="date">
        Date
       </label>
       <div class="input-group">
@@ -47,7 +47,7 @@
         <i class="fa fa-calendar">
         </i>
        </div>
-       <input class="form-control form-control" id="date1" name="date" placeholder="YYYY/MM/DD" type="text"/>
+       <input class="form-control form-control" id="date" name="date" placeholder="YYYY/MM/DD" type="text"/>
       </div>
      </div>
      <div class="form-group">

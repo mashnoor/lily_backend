@@ -26,6 +26,7 @@
                             <h2>{{ $user[0]->name}}</h2>
 
 
+
                             <form method="post" action="/update/{{$user[0] ->id}}">
                                 <input type="hidden" name="_token" value="{{ csrf_token() }}"/>
                                 <button class="btn btn-lg btn-success" type="submit">
@@ -52,6 +53,29 @@
                         <hr>
 
                         <H4>Money Due: {{$user[0]->moneyDue}} TK.</H4>
+                         <form action="money/{{$user[0]->id}}" method="post">
+
+      <label class="control-label " for="number">
+       Number
+      </label>
+      <div class="input-group">
+       <div class="input-group-addon">
+        <i class="fa fa-usd">
+        </i>
+       </div>
+       <input class="form-control" id="number" name="number" type="text"/>
+      </div>
+     </div>
+     <div class="form-group">
+      <div>
+         <input type="hidden" name="_token" value="{{ csrf_token() }}"/>
+     <div class="form-group ">
+       <button class="btn btn-primary " name="submit" type="submit">
+        Submit
+       </button>
+      </div>
+     </div>
+    </form>
 
                         <br>
 
