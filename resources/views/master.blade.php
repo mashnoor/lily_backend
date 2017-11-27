@@ -41,6 +41,9 @@
             <li>
                 <a href="{{ url('banned') }}">Banned Riders</a>
             </li>
+            <li>
+                <a href="{{ url('history') }}">History</a>
+            </li>
 
 
 

@@ -202,9 +202,8 @@ class WebpanelController extends Controller
 
     function userRidersProfile($id)
     {
-        //$user = UserCustomer::find($name);
+
         $user = UserRider::where('id', '=', $id)->get();
-        // $status = $user->status;
         $userHistory = History::where('userRider_id', '=', $id)->get();
 
 
@@ -213,27 +212,55 @@ class WebpanelController extends Controller
 
     }
 
-    function Update_UserRiders_status(Request $request)
+    function updateRidesStatus(Request $request)
     {
 
-        $visita = UserRider::find($request->id);
-        if ($visita->status == "0") {
-            $visita->status = "1";
+        $rider = UserRider::find($request->id);
+        if ($rider->status == "1") {
+            $rider->status = "0";
         } else {
-            $visita->status = "0";
+            $rider->status = "1";
         }
-        $visita->update();
+        $rider->update();
 
-        return redirect()->back()->with('message', 'visita updated');
+        return redirect()->back()->with('message', 'rider status updated');
     }
 
 
-    function Banned_Riders()
+    function bannedRiders()
     {
 
-        $Banned_Riders = UserRider::where('status', '=', "1")->get();
-        return view('bannedriders')->with('Banned_Riders', $Banned_Riders);
+        $bannedRiders = UserRider::where('status', '=', "0")->get();
+        return view('bannedriders')->with('bannedRiders', $bannedRiders);
+    
+}
+    function history()
+    {
+
+        $histories = History::all();
+
+        return view('history')->with('histories',$histories);
     }
+
+    function getMoney()
+    {
+
+
+    }
+
+   public function searchHistory(Request $fromDate) {
+
+ 
+    // $from = $fromDate->date;
+    // $to= $fromDate->date1;
+
+    $from = "2017-09-01";
+
+    $to = "2017-11-02";
+
+          $histories = History::whereBetween('date', [$from, $to])->get();
+          return view('history')->with('histories',$histories); 
+}
 
 
 }

@@ -31,10 +31,10 @@
                                 <button class="btn btn-lg btn-success" type="submit">
                                     <?php
                                     if ($user[0]->status == "0") {
-                                        echo " BAN Rider";
+                                        echo " Active Rider";
 
                                     } else {
-                                        echo "  Active Rider";
+                                        echo "  BANNED Rider";
                                     } ?>
 
                                 </button>
@@ -44,12 +44,16 @@
                         <br>
                         <h4>
                             <?php   if ($user[0]->status == "0") {
-                                echo "<div style ='color:#33FF3F'>  The Rider is Active now.";
+                                echo "<div style ='color:##FF0000'>  The Rider is BANNED now.";
 
                             } else {
-                                echo "<div style ='color:#FF3333'>  The Rider is BANNED now.";
+                                echo "<div style ='color:#33FF3F'>  The Rider is ACTIVE now.";
                             } ?></h4>
                         <hr>
+
+                        <H4>Money Due: {{$user[0]->moneyDue}} TK.</H4>
+
+                        <br>
 
 
                         <ul class="container details">

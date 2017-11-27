@@ -20,7 +20,7 @@
                 <th>E-mail</th>
                 
             </tr>
-            @foreach($Banned_Riders as $user)
+            @foreach($bannedRiders as $user)
                 <tr>
                     <td>{{ $user->id }}</td>
                    <td><a href = "riders/profile/{{$user->id}}">{{ $user->name }}</a></td>  

@@ -11,9 +11,9 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/','WebpanelController@getDashboard');
+   
+
 Route::get('dashboard', 'WebpanelController@getDashboard');
 
 Route::get('customerrides', 'WebpanelController@getMostActiveUsers');
@@ -29,5 +29,7 @@ Route::get('unsuccessfulrides', 'WebpanelController@getUnsuccessfulRides');
 Route::get('constants', 'WebpanelController@getConstants');
 
 
-Route::post('update/{id}', 'WebpanelController@Update_UserRiders_status');
-Route::get('banned', 'WebpanelController@Banned_Riders');
+Route::post('update/{id}', 'WebpanelController@updateRidesStatus');
+Route::get('banned', 'WebpanelController@bannedRiders');
+Route::get('history', 'WebpanelController@history');
+Route::get('/history/search', 'WebpanelController@searchHistory');
